@@ -1,0 +1,248 @@
+{
+    "movies": [
+        {
+            "id": 1,
+            "title": "A Space Odyssey",
+            "description": "The greatest film ever made began with the meeting of two brilliant minds: Stanley Kubrick and sci-fi seer Arthur C. Clarke. “I understand he’s a nut who lives in a tree in India somewhere",
+            "imdbRating": "9.5",
+            "language": "English",
+            "genre": "Science fiction",
+            "imageURL": "https://images-na.ssl-images-amazon.com/images/I/815ex8QSniL._RI_.jpg",
+            "youtubeURL": "https://www.youtube.com/embed/oR_e9y-bka0",
+            "isPrimeMovie": true
+        },
+        {
+            "id": 2,
+            "title": "The Godfather",
+            "description": "From the wise guys of Goodfellas to The Sopranos, all crime dynasties that came after The Godfather are descendants of the Corleones: Francis Ford Coppola’s magnum opus is the ultimate.",
+            "imdbRating": "9.5",
+            "language": "English",
+            "genre": "Thriller",
+            "imageURL": "https://m.media-amazon.com/images/M/MV5BM2MyNjYxNmUtYTAwNi00MTYxLWJmNWYtYzZlODY3ZTk3OTFlXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_.jpg",
+            "youtubeURL": "https://www.youtube.com/embed/sY1S34973zA",
+            "isPrimeMovie": true
+        },
+        {
+            "id": 1,
+            "title": "A Space Odyssey",
+            "description": "The greatest film ever made began with the meeting of two brilliant minds: Stanley Kubrick and sci-fi seer Arthur C. Clarke. “I understand he’s a nut who lives in a tree in India somewhere",
+            "imdbRating": "9.5",
+            "language": "English",
+            "genre": "Science fiction",
+            "imageURL": "https://images-na.ssl-images-amazon.com/images/I/815ex8QSniL._RI_.jpg",
+            "youtubeURL": "https://www.youtube.com/embed/oR_e9y-bka0",
+            "isPrimeMovie": true
+        },
+        {
+            "id": 2,
+            "title": "The Godfather",
+            "description": "From the wise guys of Goodfellas to The Sopranos, all crime dynasties that came after The Godfather are descendants of the Corleones: Francis Ford Coppola’s magnum opus is the ultimate.",
+            "imdbRating": "9.5",
+            "language": "English",
+            "genre": "Thriller",
+            "imageURL": "https://m.media-amazon.com/images/M/MV5BM2MyNjYxNmUtYTAwNi00MTYxLWJmNWYtYzZlODY3ZTk3OTFlXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_.jpg",
+            "youtubeURL": "https://www.youtube.com/embed/sY1S34973zA",
+            "isPrimeMovie": true
+        },
+        {
+            "id": 1,
+            "title": "A Space Odyssey",
+            "description": "The greatest film ever made began with the meeting of two brilliant minds: Stanley Kubrick and sci-fi seer Arthur C. Clarke. “I understand he’s a nut who lives in a tree in India somewhere",
+            "imdbRating": "9.5",
+            "language": "English",
+            "genre": "Science fiction",
+            "imageURL": "https://images-na.ssl-images-amazon.com/images/I/815ex8QSniL._RI_.jpg",
+            "youtubeURL": "https://www.youtube.com/embed/oR_e9y-bka0",
+            "isPrimeMovie": true
+        },
+        {
+            "id": 2,
+            "title": "The Godfather",
+            "description": "From the wise guys of Goodfellas to The Sopranos, all crime dynasties that came after The Godfather are descendants of the Corleones: Francis Ford Coppola’s magnum opus is the ultimate.",
+            "imdbRating": "9.5",
+            "language": "English",
+            "genre": "Thriller",
+            "imageURL": "https://m.media-amazon.com/images/M/MV5BM2MyNjYxNmUtYTAwNi00MTYxLWJmNWYtYzZlODY3ZTk3OTFlXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_.jpg",
+            "youtubeURL": "https://www.youtube.com/embed/sY1S34973zA",
+            "isPrimeMovie": true
+        },
+        {
+            "id": 1,
+            "title": "A Space Odyssey",
+            "description": "The greatest film ever made began with the meeting of two brilliant minds: Stanley Kubrick and sci-fi seer Arthur C. Clarke. “I understand he’s a nut who lives in a tree in India somewhere",
+            "imdbRating": "9.5",
+            "language": "English",
+            "genre": "Science fiction",
+            "imageURL": "https://images-na.ssl-images-amazon.com/images/I/815ex8QSniL._RI_.jpg",
+            "youtubeURL": "https://www.youtube.com/embed/oR_e9y-bka0",
+            "isPrimeMovie": true
+        },
+        {
+            "id": 2,
+            "title": "The Godfather",
+            "description": "From the wise guys of Goodfellas to The Sopranos, all crime dynasties that came after The Godfather are descendants of the Corleones: Francis Ford Coppola’s magnum opus is the ultimate.",
+            "imdbRating": "9.5",
+            "language": "English",
+            "genre": "Thriller",
+            "imageURL": "https://m.media-amazon.com/images/M/MV5BM2MyNjYxNmUtYTAwNi00MTYxLWJmNWYtYzZlODY3ZTk3OTFlXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_.jpg",
+            "youtubeURL": "https://www.youtube.com/embed/sY1S34973zA",
+            "isPrimeMovie": true
+        },
+        {
+            "id": 1,
+            "title": "A Space Odyssey",
+            "description": "The greatest film ever made began with the meeting of two brilliant minds: Stanley Kubrick and sci-fi seer Arthur C. Clarke. “I understand he’s a nut who lives in a tree in India somewhere",
+            "imdbRating": "9.5",
+            "language": "English",
+            "genre": "Science fiction",
+            "imageURL": "https://images-na.ssl-images-amazon.com/images/I/815ex8QSniL._RI_.jpg",
+            "youtubeURL": "https://www.youtube.com/embed/oR_e9y-bka0",
+            "isPrimeMovie": true
+        },
+        {
+            "id": 2,
+            "title": "The Godfather",
+            "description": "From the wise guys of Goodfellas to The Sopranos, all crime dynasties that came after The Godfather are descendants of the Corleones: Francis Ford Coppola’s magnum opus is the ultimate.",
+            "imdbRating": "9.5",
+            "language": "English",
+            "genre": "Thriller",
+            "imageURL": "https://m.media-amazon.com/images/M/MV5BM2MyNjYxNmUtYTAwNi00MTYxLWJmNWYtYzZlODY3ZTk3OTFlXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_.jpg",
+            "youtubeURL": "https://www.youtube.com/embed/sY1S34973zA",
+            "isPrimeMovie": true
+        },
+        {
+            "id": 1,
+            "title": "A Space Odyssey",
+            "description": "The greatest film ever made began with the meeting of two brilliant minds: Stanley Kubrick and sci-fi seer Arthur C. Clarke. “I understand he’s a nut who lives in a tree in India somewhere",
+            "imdbRating": "9.5",
+            "language": "English",
+            "genre": "Science fiction",
+            "imageURL": "https://images-na.ssl-images-amazon.com/images/I/815ex8QSniL._RI_.jpg",
+            "youtubeURL": "https://www.youtube.com/embed/oR_e9y-bka0",
+            "isPrimeMovie": true
+        },
+        {
+            "id": 2,
+            "title": "The Godfather",
+            "description": "From the wise guys of Goodfellas to The Sopranos, all crime dynasties that came after The Godfather are descendants of the Corleones: Francis Ford Coppola’s magnum opus is the ultimate.",
+            "imdbRating": "9.5",
+            "language": "English",
+            "genre": "Thriller",
+            "imageURL": "https://m.media-amazon.com/images/M/MV5BM2MyNjYxNmUtYTAwNi00MTYxLWJmNWYtYzZlODY3ZTk3OTFlXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_.jpg",
+            "youtubeURL": "https://www.youtube.com/embed/sY1S34973zA",
+            "isPrimeMovie": true
+        },
+        {
+            "id": 1,
+            "title": "A Space Odyssey",
+            "description": "The greatest film ever made began with the meeting of two brilliant minds: Stanley Kubrick and sci-fi seer Arthur C. Clarke. “I understand he’s a nut who lives in a tree in India somewhere",
+            "imdbRating": "9.5",
+            "language": "English",
+            "genre": "Science fiction",
+            "imageURL": "https://images-na.ssl-images-amazon.com/images/I/815ex8QSniL._RI_.jpg",
+            "youtubeURL": "https://www.youtube.com/embed/oR_e9y-bka0",
+            "isPrimeMovie": true
+        },
+        {
+            "id": 2,
+            "title": "The Godfather",
+            "description": "From the wise guys of Goodfellas to The Sopranos, all crime dynasties that came after The Godfather are descendants of the Corleones: Francis Ford Coppola’s magnum opus is the ultimate.",
+            "imdbRating": "9.5",
+            "language": "English",
+            "genre": "Thriller",
+            "imageURL": "https://m.media-amazon.com/images/M/MV5BM2MyNjYxNmUtYTAwNi00MTYxLWJmNWYtYzZlODY3ZTk3OTFlXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_.jpg",
+            "youtubeURL": "https://www.youtube.com/embed/sY1S34973zA",
+            "isPrimeMovie": true
+        },
+        {
+            "id": 1,
+            "title": "A Space Odyssey",
+            "description": "The greatest film ever made began with the meeting of two brilliant minds: Stanley Kubrick and sci-fi seer Arthur C. Clarke. “I understand he’s a nut who lives in a tree in India somewhere",
+            "imdbRating": "9.5",
+            "language": "English",
+            "genre": "Science fiction",
+            "imageURL": "https://images-na.ssl-images-amazon.com/images/I/815ex8QSniL._RI_.jpg",
+            "youtubeURL": "https://www.youtube.com/embed/oR_e9y-bka0",
+            "isPrimeMovie": true
+        },
+        {
+            "id": 2,
+            "title": "The Godfather",
+            "description": "From the wise guys of Goodfellas to The Sopranos, all crime dynasties that came after The Godfather are descendants of the Corleones: Francis Ford Coppola’s magnum opus is the ultimate.",
+            "imdbRating": "9.5",
+            "language": "English",
+            "genre": "Thriller",
+            "imageURL": "https://m.media-amazon.com/images/M/MV5BM2MyNjYxNmUtYTAwNi00MTYxLWJmNWYtYzZlODY3ZTk3OTFlXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_.jpg",
+            "youtubeURL": "https://www.youtube.com/embed/sY1S34973zA",
+            "isPrimeMovie": true
+        },
+        {
+            "id": 1,
+            "title": "A Space Odyssey",
+            "description": "The greatest film ever made began with the meeting of two brilliant minds: Stanley Kubrick and sci-fi seer Arthur C. Clarke. “I understand he’s a nut who lives in a tree in India somewhere",
+            "imdbRating": "9.5",
+            "language": "English",
+            "genre": "Science fiction",
+            "imageURL": "https://images-na.ssl-images-amazon.com/images/I/815ex8QSniL._RI_.jpg",
+            "youtubeURL": "https://www.youtube.com/embed/oR_e9y-bka0",
+            "isPrimeMovie": true
+        },
+        {
+            "id": 2,
+            "title": "The Godfather",
+            "description": "From the wise guys of Goodfellas to The Sopranos, all crime dynasties that came after The Godfather are descendants of the Corleones: Francis Ford Coppola’s magnum opus is the ultimate.",
+            "imdbRating": "9.5",
+            "language": "English",
+            "genre": "Thriller",
+            "imageURL": "https://m.media-amazon.com/images/M/MV5BM2MyNjYxNmUtYTAwNi00MTYxLWJmNWYtYzZlODY3ZTk3OTFlXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_.jpg",
+            "youtubeURL": "https://www.youtube.com/embed/sY1S34973zA",
+            "isPrimeMovie": true
+        },
+        {
+            "id": 1,
+            "title": "A Space Odyssey",
+            "description": "The greatest film ever made began with the meeting of two brilliant minds: Stanley Kubrick and sci-fi seer Arthur C. Clarke. “I understand he’s a nut who lives in a tree in India somewhere",
+            "imdbRating": "9.5",
+            "language": "English",
+            "genre": "Science fiction",
+            "imageURL": "https://images-na.ssl-images-amazon.com/images/I/815ex8QSniL._RI_.jpg",
+            "youtubeURL": "https://www.youtube.com/embed/oR_e9y-bka0",
+            "isPrimeMovie": true
+        },
+        {
+            "id": 2,
+            "title": "The Godfather",
+            "description": "From the wise guys of Goodfellas to The Sopranos, all crime dynasties that came after The Godfather are descendants of the Corleones: Francis Ford Coppola’s magnum opus is the ultimate.",
+            "imdbRating": "9.5",
+            "language": "English",
+            "genre": "Thriller",
+            "imageURL": "https://m.media-amazon.com/images/M/MV5BM2MyNjYxNmUtYTAwNi00MTYxLWJmNWYtYzZlODY3ZTk3OTFlXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_.jpg",
+            "youtubeURL": "https://www.youtube.com/embed/sY1S34973zA",
+            "isPrimeMovie": true
+        },
+        {
+            "id": 1,
+            "title": "A Space Odyssey",
+            "description": "The greatest film ever made began with the meeting of two brilliant minds: Stanley Kubrick and sci-fi seer Arthur C. Clarke. “I understand he’s a nut who lives in a tree in India somewhere",
+            "imdbRating": "9.5",
+            "language": "English",
+            "genre": "Science fiction",
+            "imageURL": "https://images-na.ssl-images-amazon.com/images/I/815ex8QSniL._RI_.jpg",
+            "youtubeURL": "https://www.youtube.com/embed/oR_e9y-bka0",
+            "isPrimeMovie": true
+        },
+        {
+            "id": 2,
+            "title": "The Godfather",
+            "description": "From the wise guys of Goodfellas to The Sopranos, all crime dynasties that came after The Godfather are descendants of the Corleones: Francis Ford Coppola’s magnum opus is the ultimate.",
+            "imdbRating": "9.5",
+            "language": "English",
+            "genre": "Thriller",
+            "imageURL": "https://m.media-amazon.com/images/M/MV5BM2MyNjYxNmUtYTAwNi00MTYxLWJmNWYtYzZlODY3ZTk3OTFlXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_.jpg",
+            "youtubeURL": "https://www.youtube.com/embed/sY1S34973zA",
+            "isPrimeMovie": true
+        }
+        
+        
+    ]
+}
