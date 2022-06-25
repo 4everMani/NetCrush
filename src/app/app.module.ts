@@ -1,17 +1,21 @@
-import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
 
-import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { BrowserModule } from '@angular/platform-browser';
 import { CoreModule } from './core/core.module';
-import { MovieModule } from './movie/movie.module';
+import { LoginComponent } from './auth/login/login.component';
 import { MaterialModule } from './material/material.module';
+import { MovieModule } from './movie/movie.module';
+import { NgModule } from '@angular/core';
+import { RegisterComponent } from './auth/register/register.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
