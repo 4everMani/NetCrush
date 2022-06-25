@@ -9,6 +9,7 @@ import { MaterialModule } from './material/material.module';
 import { MovieModule } from './movie/movie.module';
 import { NgModule } from '@angular/core';
 import { RegisterComponent } from './auth/register/register.component';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import { RegisterComponent } from './auth/register/register.component';
     BrowserAnimationsModule,
     CoreModule,
     MovieModule,
-    MaterialModule
+    MaterialModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

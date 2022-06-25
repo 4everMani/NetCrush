@@ -65,7 +65,7 @@
     <!-- <button mat-icon-button (click)="sidenav.open()">
         <mat-icon>menu</mat-icon>
     </button> -->
-    <a routerLink="">
+    <a href="/">
         <img class="img_size" src="../../../../assets/images/logo.png" alt="">
     </a>
     <button class="button" mat-button routerLink="/movies">
@@ -85,16 +85,16 @@
             <mat-icon class="">language</mat-icon>
         </button>
         <mat-menu #language_dropdown >
-            <button class="button" mat-menu-item routterLink="/login">English</button>
-            <button class="button" mat-menu-item routterLink="/register">Spanish</button>
+            <button class="button" mat-menu-item routterLink="">English</button>
+            <button class="button" mat-menu-item routterLink="">Spanish</button>
         </mat-menu>
 
         <button class="button dropdown-toggle ms-auto" mat-button [mat-menu-trigger-for]="dropdown">
             <mat-icon class="">account_circle</mat-icon>
         </button>
         <mat-menu #dropdown >
-                <button class="button" mat-menu-item routterLink="">Login</button>
-                <button class="button" mat-menu-item routterLink="">SignUp</button>
+                <button class="button" mat-menu-item [routerLink]="'login'">Login</button>
+                <button class="button" mat-menu-item [routerLink]="'register'">SignUp</button>
         </mat-menu> 
     </div>
 </mat-toolbar>

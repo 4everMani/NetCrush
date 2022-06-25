@@ -1,1 +1,88 @@
-<p>register works!</p>
+<ng-container>
+  <form class="form" #f="ngForm" (ngSubmit)="onSubmit(f)">
+    <mat-form-field>
+      <input
+        matInput
+        ngModel
+        name="firstName"
+        placeholder="First Name"
+        required
+        #firstname="ngModel"
+      />
+      <mat-error *ngIf="firstname.hasError('required')"
+        >Field must not be empty</mat-error
+      >
+    </mat-form-field>
+
+    <mat-form-field>
+      <input
+        matInput
+        ngModel
+        name="lastName"
+        placeholder="Last Name"
+        required
+        #lastName="ngModel"
+      />
+      <mat-error *ngIf="lastName.hasError('required')"
+        >Field must not be empty</mat-error
+      >
+    </mat-form-field>
+
+    <mat-form-field>
+      <input
+        type="email"
+        matInput
+        ngModel
+        name="email"
+        placeholder="Your email"
+        email
+        required
+        #emailInput="ngModel"
+      />
+      <mat-error *ngIf="emailInput.hasError('required')"
+        >Field must not be empty</mat-error
+      >
+      <mat-error *ngIf="!emailInput.hasError('required')"
+        >Email is invalid</mat-error
+      >
+    </mat-form-field>
+    <mat-form-field hintLabel="Should be atleast 6 characters long">
+      <input
+        type="password"
+        matInput
+        ngModel
+        name="password"
+        placeholder="Your password"
+        required
+        minlength="6"
+        #pwInput="ngModel"
+      />
+      <mat-hint align="end">{{ pwInput.value?.length }}/6</mat-hint>
+      <mat-error>atleast 6 characters required</mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="standard">
+      <mat-label>Birthdate</mat-label>
+      <input
+        matInput
+        [matDatepicker]="picker"
+        [max]="maxDate"
+        ngModel
+        name="birthdate"
+        date
+        required
+        #date="ngModel"
+      />
+      <mat-hint>DD/MM/YYYY</mat-hint>
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+      <mat-error *ngIf="date.hasError('required')"
+        >Field must not be empty</mat-error
+      >
+      <mat-error *ngIf="!date.hasError('required')"
+        >Date is not valid</mat-error
+      >
+    </mat-form-field>
+    <mat-checkbox ngModel name="isPrime">Opt for Prime services</mat-checkbox>
+    <button mat-raised-button color="primary" [disabled]="f.invalid">Submit</button>
+  </form>
+</ng-container>
