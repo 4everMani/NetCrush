@@ -2,7 +2,6 @@
     <div class="reg_container">
         <img src="../../../assets/images/image.jpg" alt="">
         <form class="form" #f="ngForm" (ngSubmit)="onSubmit(f)">
-            <!-- <h3>Signup</h3> -->
             <mat-form-field>
               <input
                 matInput
@@ -37,7 +36,7 @@
                 matInput
                 ngModel
                 name="email"
-                placeholder="Your email"
+                placeholder="Email"
                 email
                 required
                 #emailInput="ngModel"
@@ -55,7 +54,7 @@
                 matInput
                 ngModel
                 name="password"
-                placeholder="Your password"
+                placeholder="Password"
                 required
                 minlength="6"
                 #pwInput="ngModel"
@@ -64,7 +63,7 @@
               <mat-error>atleast 6 characters required</mat-error>
             </mat-form-field>
             <mat-form-field appearance="standard">
-              <mat-label>Birthdate</mat-label>
+              <mat-label>DOB</mat-label>
               <input
                 matInput
                 [matDatepicker]="picker"
