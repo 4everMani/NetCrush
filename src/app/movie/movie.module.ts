@@ -7,6 +7,7 @@ import { MovieListComponent } from './movie-list/movie-list.component';
 import { MovieService } from './services/movie.service';
 import { MovieFacade } from './store/movie.facade';
 import { HttpClientModule } from '@angular/common/http';
+import { MaterialModule } from '../material/material.module';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { HttpClientModule } from '@angular/common/http';
   imports: [
     CommonModule,
     MovieRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    MaterialModule
     
   ],
   providers: [

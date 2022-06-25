@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CoreModule } from './core/core.module';
 import { MovieModule } from './movie/movie.module';
+import { MaterialModule } from './material/material.module';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { MovieModule } from './movie/movie.module';
     AppRoutingModule,
     BrowserAnimationsModule,
     CoreModule,
-    MovieModule
+    MovieModule,
+    MaterialModule
   ],
   providers: [],
   bootstrap: [AppComponent]

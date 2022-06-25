@@ -1,1 +1,26 @@
-<p>movie-item works!</p>
+
+<div class="box">
+    <div class="box_img">
+        <img [src]="movie.imageURL" alt="">
+    </div>
+    <div class="content">
+        <h3>{{movie.title}}</h3>
+        <p>Imdb {{movie.imdbRating}}/10</p>
+    </div>
+    <div class="button">
+        <div class="icon_flex">
+            <button class="fav" mat-icon-button color="warn">
+                <mat-icon>favorite</mat-icon>
+            </button>
+            <button class="fav" mat-icon-button color="warn">
+                <mat-icon>watch_later</mat-icon>
+            </button>
+            <button class="fav" mat-icon-button color="warn">
+                <mat-icon>play_circle_filled</mat-icon>
+            </button>
+        </div>
+       
+    </div>
+</div>
+
+
