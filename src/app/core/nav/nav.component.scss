@@ -1,0 +1,36 @@
+mat-toolbar {
+    background-color: #FE4643;
+    height: fit-content;
+};
+
+mat-sidenav {
+    background-color: #FE4643;
+};
+
+mat-toolbar .align_right {
+    align-items: end !important;
+}
+
+.button:hover {
+    background-color: #f35853 !important;
+};
+
+
+.sidenav {
+    margin-top: 50px;
+};
+
+.icon-gap {
+    margin-right: 4px;
+}
+
+.img_size {
+    height: 50px;
+    width: 150px;
+}
+
+.menu_background {
+    background-color: red;
+}
+
+
