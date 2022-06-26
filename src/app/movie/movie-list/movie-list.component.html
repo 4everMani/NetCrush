@@ -1,8 +1,16 @@
-<span class="card_flex">
-    <div class="card_item" *ngFor="let movie of movies$ | async">
-        <app-movie-item [movie]="movie">
-        </app-movie-item>
+
+<ng-container>
+    <div>
+        <app-search></app-search>
     </div>
-</span>
+    <span class="card_flex">
+        <div class="card_item" *ngFor="let movie of movies$ | async">
+            <app-movie-item [movie]="movie">
+            </app-movie-item>
+        </div>
+    </span>
+</ng-container>
+
+
 
 

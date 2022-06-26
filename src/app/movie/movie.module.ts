@@ -8,12 +8,14 @@ import { MovieService } from './services/movie.service';
 import { MovieFacade } from './store/movie.facade';
 import { HttpClientModule } from '@angular/common/http';
 import { MaterialModule } from '../material/material.module';
+import { SearchComponent } from './search/search.component';
 
 
 @NgModule({
   declarations: [
     MovieItemComponent,
     MovieListComponent,
+    SearchComponent,
   ],
   imports: [
     CommonModule,
