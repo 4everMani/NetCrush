@@ -14,6 +14,7 @@ import { ReviewListComponent } from './review-list/review-list.component';
 import { ReviewComponent } from './review/review.component';
 import { ScreenPlayerComponent } from './screen-player/screen-player.component';
 import { SafePipe } from './safe.pipe';
+import { MovieInfoComponent } from './movie-info/movie-info.component';
 
 
 @NgModule({
@@ -26,6 +27,7 @@ import { SafePipe } from './safe.pipe';
     ReviewComponent,
     ScreenPlayerComponent,
     SafePipe,
+    MovieInfoComponent,
   ],
   imports: [
     CommonModule,

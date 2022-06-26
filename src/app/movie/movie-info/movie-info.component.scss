@@ -1,0 +1,54 @@
+.card_container {
+    background: black;
+    height: 500px;
+    margin-left: 20px;
+    width: 300px;
+    border: 2px solid #643737;
+    border-radius: 25px;
+}
+
+.title {
+    margin-top: 10px;
+    text-align: center;
+    color: white;
+}
+
+.type {
+    margin-left: 8px;
+    color: white;
+}
+
+.star{
+    color: rgb(253, 237, 16);
+    margin-left: 5px;
+    margin-right: 10px;
+    margin-bottom: 8px;
+}
+
+
+.rating {
+    display: flex;
+    justify-content: end;
+    align-items: flex-end;
+    color: white;
+    width: 200px;
+}
+
+img {
+    width: 280px;
+    height: 250px;
+    margin-top: 10px;
+    margin-left: 8px;
+    border-radius: 20px;
+}
+
+.description {
+    color: white;
+    margin-left: 10px;
+    width: 250px;
+    height: 90px;
+}
+
+.fav {
+    color: red !important;
+}
