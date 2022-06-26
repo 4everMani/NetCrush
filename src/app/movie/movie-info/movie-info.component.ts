@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { IMovie } from 'src/app/interfaces/i-movie';
 
 @Component({
   selector: 'app-movie-info',
@@ -6,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./movie-info.component.scss']
 })
 export class MovieInfoComponent implements OnInit {
+
+  @Input() movie!: IMovie
 
   constructor() { }
 

@@ -1,16 +1,16 @@
 <div class="card_container">
-    <img [src]="'https://m.media-amazon.com/images/M/MV5BM2MyNjYxNmUtYTAwNi00MTYxLWJmNWYtYzZlODY3ZTk3OTFlXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_.jpg'" alt="">
+    <img [src]="movie.imageURL" alt="">
     <div>
-        <h4 class="title">Man Vs. Wild</h4>
+        <h4 class="title">{{movie.title}}</h4>
     </div>
     <span class="d-flex">
-        <h5 class="type">Comedey</h5>
+        <h5 class="type">{{movie.genre.slice(0,7)}}</h5>
         <div class="rating">
-            <h5>7</h5>
+            <h5>{{movie.imdbRating}}</h5>
             <mat-icon class="star">star</mat-icon>
         </div>
     </span>
-    <p class="description">Summery: The greatest film ever made began with the meeting…he’s a nut who lives in a tree in India somewhere</p>
+    <p class="description">Summery: {{movie.description.slice(0,90).concat('...')}}</p>
     <span class="d-flex justify-content-center">
         <button class="fav" mat-icon-button>
             <mat-icon>favorite</mat-icon>
@@ -19,4 +19,5 @@
             <mat-icon>watch_later</mat-icon>
         </button>
     </span>
+    <br>
 </div>

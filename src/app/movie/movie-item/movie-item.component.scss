@@ -26,7 +26,7 @@ div.box {
 .box .box_img img{
     width: 250px;
     height: 300px;
-    border: 2px solid rgb(233, 88, 88);
+    border: 3px solid rgb(233, 88, 88);
     border-radius: 10px;
 }
 
@@ -93,11 +93,6 @@ div.box {
     padding: 20px 0;
     margin: 0 25px;
 }
-
-// .fav {
-//     color: pink;
-//     size: 40px;
-// }
 
 .fav:hover {
     transform: scale(1.3);
