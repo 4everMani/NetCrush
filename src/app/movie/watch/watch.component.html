@@ -1,8 +1,13 @@
 
 <div class="player">
-    <app-screen-player [videoUrl]="movie.youtubeURL"></app-screen-player>
-    <!-- <app-screen-player></app-screen-player> -->
+    <!-- <app-screen-player [videoUrl]="movie.youtubeURL"></app-screen-player> -->
+    <app-screen-player></app-screen-player>
     <app-movie-info [movie]="movie"></app-movie-info>
 </div>
+
+<ng-container>
+    <app-review-list></app-review-list>
+</ng-container>
+
 
 

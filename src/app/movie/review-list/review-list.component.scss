@@ -1,0 +1,29 @@
+.textarea {
+    background: white;
+    width: 595px;
+    height: 120px;
+    border-radius: 25px;
+}
+
+textarea:focus{
+    outline: none;
+    border: 2px solid rgb(166, 182, 160);
+}
+
+.container {
+    background: black;
+    max-width: 700px;
+    margin-left: 85px;
+    margin-top: 40px;
+}
+
+.text {
+    color: white;
+}
+
+button {
+    margin-top: 15px;
+    border-radius: 25px;
+    margin-right: 76px;
+    margin-bottom: 20px;
+}
