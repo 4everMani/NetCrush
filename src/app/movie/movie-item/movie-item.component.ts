@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Route, Router } from '@angular/router';
 import { IMovie } from '../../interfaces/i-movie';
 import { MovieService } from '../services/movie.service';
 
@@ -11,10 +12,9 @@ export class MovieItemComponent implements OnInit {
 
   @Input() movie!: IMovie
 
-  constructor(private readonly service: MovieService) { }
+  constructor(private route: Router) { }
 
   ngOnInit(): void {
-    console.log("killer")
   }
 
 }

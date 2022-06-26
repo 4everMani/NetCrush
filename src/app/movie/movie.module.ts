@@ -9,6 +9,11 @@ import { MovieFacade } from './store/movie.facade';
 import { HttpClientModule } from '@angular/common/http';
 import { MaterialModule } from '../material/material.module';
 import { SearchComponent } from './search/search.component';
+import { WatchComponent } from './watch/watch.component';
+import { ReviewListComponent } from './review-list/review-list.component';
+import { ReviewComponent } from './review/review.component';
+import { ScreenPlayerComponent } from './screen-player/screen-player.component';
+import { SafePipe } from './safe.pipe';
 
 
 @NgModule({
@@ -16,6 +21,11 @@ import { SearchComponent } from './search/search.component';
     MovieItemComponent,
     MovieListComponent,
     SearchComponent,
+    WatchComponent,
+    ReviewListComponent,
+    ReviewComponent,
+    ScreenPlayerComponent,
+    SafePipe,
   ],
   imports: [
     CommonModule,
