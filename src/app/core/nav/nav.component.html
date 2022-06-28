@@ -19,7 +19,7 @@
             <button class="button dropdown-toggle" mat-button [mat-menu-trigger-for]="language_dropdown">
                 <mat-icon class="">language</mat-icon>
             </button>
-            <mat-menu #language_dropdown >
+            <mat-menu #language_dropdown class="menu">
                 <button class="button" mat-menu-item routterLink="">English</button>
                 <button class="button" mat-menu-item routterLink="">Spanish</button>
             </mat-menu>
@@ -27,7 +27,7 @@
             <button class="button dropdown-toggle ms-auto" mat-button [mat-menu-trigger-for]="dropdown">
                 <mat-icon class="">account_circle</mat-icon>
             </button>
-            <mat-menu #dropdown >
+            <mat-menu #dropdown class="menu">
                     <button class="button" mat-menu-item [routerLink]="'login'">Login</button>
                     <button class="button" mat-menu-item [routerLink]="'register'">SignUp</button>
             </mat-menu> 
