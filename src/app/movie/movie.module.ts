@@ -15,7 +15,7 @@ import { ReviewComponent } from './review/review.component';
 import { ScreenPlayerComponent } from './screen-player/screen-player.component';
 import { SafePipe } from './safe.pipe';
 import { MovieInfoComponent } from './movie-info/movie-info.component';
-
+import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 
 @NgModule({
   declarations: [
@@ -33,7 +33,8 @@ import { MovieInfoComponent } from './movie-info/movie-info.component';
     CommonModule,
     MovieRoutingModule,
     HttpClientModule,
-    MaterialModule
+    MaterialModule,
+    AngularFirestoreModule,
     
   ],
   providers: [

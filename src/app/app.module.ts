@@ -10,6 +10,11 @@ import { MovieModule } from './movie/movie.module';
 import { NgModule } from '@angular/core';
 import { RegisterComponent } from './auth/register/register.component';
 import { FormsModule } from '@angular/forms';
+import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
+import { environment } from '../environments/environment';
+import { provideAuth,getAuth } from '@angular/fire/auth';
+import { provideFirestore,getFirestore } from '@angular/fire/firestore';
+import { AngularFireModule } from '@angular/fire/compat';
 
 
 @NgModule({
@@ -25,7 +30,11 @@ import { FormsModule } from '@angular/forms';
     CoreModule,
     MovieModule,
     MaterialModule,
-    FormsModule
+    FormsModule,
+    // provideFirebaseApp(() => initializeApp(environment.firebase)),
+    // provideAuth(() => getAuth()),
+    // provideFirestore(() => getFirestore()),
+    AngularFireModule.initializeApp(environment.firebase),
   ],
   providers: [],
   bootstrap: [AppComponent]

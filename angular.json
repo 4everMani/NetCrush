@@ -105,6 +105,16 @@
             ],
             "scripts": []
           }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {
+            "prerender": false,
+            "ssr": false,
+            "browserTarget": "NetCrush:build:production",
+            "firebaseProject": "netcrush-22398",
+            "firebaseHostingSite": "netcrush-22398"
+          }
         }
       }
     }

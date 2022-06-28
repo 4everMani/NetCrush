@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "netcrush-22398": {
+      "hosting": {
+        "NetCrush": [
+          "netcrush-22398"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "netcrush-22398"
+  }
+}
