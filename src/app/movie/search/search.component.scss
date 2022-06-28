@@ -1,15 +1,15 @@
 .search_input {
     width: 500px;
     align-items: center;
-    border: 2px solid red !important;
+    border: 2px solid #938a8a !important;
     border-radius: 25px;
     height: 50px;
     text-align: center;
-    background-color: black;
+    background-color: #0f171e;
     padding-right: 45px;
     font-size: 25px;
     font-weight: 400;
-    color: red;    
+    color: white;    
 }
 
 input:focus{
@@ -20,7 +20,7 @@ input:focus{
 .icon {
     position: absolute;
     margin-top: 13px;
-    color: red;
+    color: #938a8a;
     margin-right: 20px;
 }
 
