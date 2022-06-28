@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
-import { map, Observable, Subject, tap } from 'rxjs';
+import { map, Observable, shareReplay, Subject, tap } from 'rxjs';
 import { IMovie } from 'src/app/interfaces/i-movie';
 import { environment } from '../../../environments/environment';
 
@@ -13,7 +13,10 @@ export class MovieService {
   constructor(private http: HttpClient, private db: AngularFirestore) { }
 
   public getAllMovies(): Observable<IMovie[]>{
-    return this.db.collection<IMovie>('movies').valueChanges();
+    return this.db.collection<IMovie>('movies').valueChanges()
+    .pipe(
+      shareReplay()
+    );
   }
 
   public getMovieById(id: number): IMovie[] {

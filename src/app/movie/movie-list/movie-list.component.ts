@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { MovieService } from '../services/movie.service';
 import { IMovie } from '../../interfaces/i-movie';
+import { MovieFacade } from '../store/movie.facade';
 
 @Component({
   selector: 'app-movie-list',
@@ -10,13 +11,12 @@ import { IMovie } from '../../interfaces/i-movie';
 })
 export class MovieListComponent implements OnInit {
 
-  public movies$ = new Observable<IMovie[]>;
+  public movies$ = this.movieFacade.movies$;
 
-  constructor(private readonly movieService: MovieService) { }
+  constructor(private readonly movieFacade: MovieFacade) { }
 
   ngOnInit(): void {
     
-    this.movies$ = this.movieService.getAllMovies();
   }
 
 }
