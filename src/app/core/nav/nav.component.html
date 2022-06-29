@@ -1,7 +1,7 @@
 <ng-container>
     <div class="d-flex nav_container">
         <a [routerLink]="'/movies'">
-            <img class="img_size" src="../../../../assets/images/logo.png" alt="">
+            <img class="img_size" src="../../../../assets/images/logo.jpg" alt="">
         </a>
         <button class="button" mat-button routerLink="/movies">
             <mat-icon class="icon-gap">movie</mat-icon>
@@ -11,7 +11,7 @@
             <mat-icon class="icon-gap">movie_filter</mat-icon>
             <span>Category</span>
         </button>
-        <button class="button" mat-button routerLink="">
+        <button class="button" mat-button (click)="onFavClick()">
             <mat-icon class="icon-gap">video_library</mat-icon>
             <span>MyStuff</span>
         </button>
@@ -28,8 +28,9 @@
                 <mat-icon class="">account_circle</mat-icon>
             </button>
             <mat-menu #dropdown class="menu">
-                    <button class="button" mat-menu-item [routerLink]="'login'">Login</button>
-                    <button class="button" mat-menu-item [routerLink]="'register'">SignUp</button>
+                    <button class="button" *ngIf="!(authFacade.user$ | async)" mat-menu-item [routerLink]="'login'">Login</button>
+                    <button class="button" *ngIf="!(authFacade.user$ | async)" mat-menu-item [routerLink]="'register'">SignUp</button>
+                    <button class="button" *ngIf="authFacade.user$ | async" mat-menu-item (click)="onLogout()">Logout</button>
             </mat-menu> 
         </div>
     </div>

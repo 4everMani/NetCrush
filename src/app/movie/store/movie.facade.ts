@@ -26,7 +26,7 @@ export class MovieFacade{
         
     }
 
-    public getMoviesById(id: number): Observable<IMovie> {
+    public getMoviesById(id: string | null): Observable<IMovie> {
         if (this.initialState.movies.length === 0){
             this.getAllMovies();
         }

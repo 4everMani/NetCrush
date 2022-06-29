@@ -15,6 +15,8 @@ import { environment } from '../environments/environment';
 import { provideAuth,getAuth } from '@angular/fire/auth';
 import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 import { AngularFireModule } from '@angular/fire/compat';
+import { AuthFacade } from './store/auth.facade';
+import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 
 
 @NgModule({
@@ -35,8 +37,10 @@ import { AngularFireModule } from '@angular/fire/compat';
     // provideAuth(() => getAuth()),
     // provideFirestore(() => getFirestore()),
     AngularFireModule.initializeApp(environment.firebase),
+    AngularFireAuthModule
+
   ],
-  providers: [],
+  providers: [AuthFacade],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

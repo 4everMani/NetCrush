@@ -21,7 +21,7 @@ export class WatchComponent implements OnInit {
   }
 
   private loadMovieDetails(): void{
-    const movieId =  Number(this.route.snapshot.paramMap.get('id'));
+    const movieId =  this.route.snapshot.paramMap.get('id');
      this.movieDetails$ = this.movieFacade.getMoviesById(movieId);
   }
 }

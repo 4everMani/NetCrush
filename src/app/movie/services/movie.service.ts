@@ -13,15 +13,17 @@ export class MovieService {
   constructor(private http: HttpClient, private db: AngularFirestore) { }
 
   public getAllMovies(): Observable<IMovie[]>{
-    return this.db.collection<IMovie>('movies').valueChanges()
-    .pipe(
-      shareReplay()
-    );
-  }
-
-  public getMovieById(id: number): IMovie[] {
-    console.log(this.store)
-    return this.store.filter(movie => movie.id === id);
-    
+    return this.db.collection<IMovie>('movies')
+           .snapshotChanges()
+           .pipe(
+            map(docArray => {
+              return docArray.map(doc => {
+                return {
+                  ...doc.payload.doc.data(),
+                  id: doc.payload.doc.id
+                };
+              });
+            })
+           )
   }
 }
