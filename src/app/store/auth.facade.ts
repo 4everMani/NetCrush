@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { IUser } from '../interfaces/i-user';
 import { AuthService } from '../services/auth.service';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, map, Observable, tap } from 'rxjs';
 import { User } from '@firebase/auth-types';
 import { user } from '@angular/fire/auth';
 import { Router } from '@angular/router';
@@ -59,7 +59,7 @@ export class AuthFacade {
    * 
    * @param user To store user
    */
-  public storeUser(user: User | null): void {
+  private storeUser(user: User | null): void {
     if (user && user?.email !== null && user.displayName !== null) {
       const loggedinUser: IUser = {
         email: user.email,
@@ -76,7 +76,14 @@ export class AuthFacade {
         this.loginSubject.next(undefined);
         this.router.navigateByUrl("/login");
     });
-    
+  }
 
+  public initAuthentication(): Observable<boolean>{
+    console.log('initialization')
+    return this.afAuth.authState
+        .pipe(
+            tap(user => this.storeUser(user)),
+            map(user => user ? true : false)
+        )
   }
 }

@@ -12,11 +12,9 @@ export class AuthGurad implements CanActivate{
                 private router: Router){}
 
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean | UrlTree> {
-        return this.afAuth.authState.pipe(
-            tap(user => this.authStore.storeUser(user)),
-            map(user => {
-                return user ? true : this.router.parseUrl('/login');
-            })
-        )    
+       return this.authStore.initAuthentication()
+           .pipe(
+            map(res => res ? true : this.router.parseUrl('/login'))
+           )
     }
 }
