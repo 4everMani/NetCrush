@@ -1,0 +1,18 @@
+<ng-container>
+  <div class="container">
+    <span
+      class="watchlist"
+      [ngClass]="{ selected: isWatcLaterEnabled }"
+      (click)="changeMode(mode.watchLater)"
+      >Watchlist</span
+    >
+    <span
+      class="fav_section"
+      [ngClass]="{ selected: !isWatcLaterEnabled }"
+      (click)="changeMode(mode.favourtie)"
+      >Favourite</span
+    >
+      <app-watch-list class="margin_top" *ngIf="isWatcLaterEnabled"></app-watch-list>
+      <app-favourite *ngIf="!isWatcLaterEnabled"></app-favourite>
+  </div>
+</ng-container>

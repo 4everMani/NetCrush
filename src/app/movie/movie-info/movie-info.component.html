@@ -1,16 +1,16 @@
-<div class="card_container">
+<div class="card_container" *ngIf="movie">
     <img [src]="movie.imageURL" alt="">
     <div>
         <h4 class="title">{{movie.title}}</h4>
     </div>
     <span class="d-flex">
-        <h5 class="type">{{movie.genre.slice(0,7)}}</h5>
+        <h5 class="type">{{movie.genre?.slice(0,7)}}</h5>
         <div class="rating">
             <h5>{{movie.imdbRating}}</h5>
             <mat-icon class="star">star</mat-icon>
         </div>
     </span>
-    <p class="description">Summery: {{movie.description.slice(0,90).concat('...')}}</p>
+    <p class="description">Summery: {{movie.description?.slice(0,90)?.concat('...')}}</p>
     <span class="d-flex justify-content-center">
         <button class="fav" mat-icon-button>
             <mat-icon>favorite</mat-icon>

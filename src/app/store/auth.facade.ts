@@ -34,7 +34,7 @@ export class AuthFacade {
       .then(() => {
         this.afAuth.authState.subscribe((user) => {
           this.storeUser(user);
-          return user;
+          this.router.navigateByUrl("/movies");
         });
       })
       .catch((error) => {

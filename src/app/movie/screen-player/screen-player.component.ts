@@ -7,7 +7,7 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class ScreenPlayerComponent implements OnInit {
 
-  @Input() videoUrl: string = 'https://www.youtube.com/embed/z6cBtguFSTk'
+  @Input() videoUrl?: string = 'https://www.youtube.com/embed/z6cBtguFSTk'
 
   constructor() { }
 

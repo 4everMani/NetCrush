@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { map, Observable, switchMap, tap } from 'rxjs';
 import { IMovie } from 'src/app/interfaces/i-movie';
+import { Movie } from 'src/app/models/movie';
 import { MovieService } from '../services/movie.service';
 import { MovieFacade } from '../store/movie.facade';
 
@@ -12,7 +13,7 @@ import { MovieFacade } from '../store/movie.facade';
 })
 export class WatchComponent implements OnInit {
 
-  public movieDetails$!: Observable<IMovie>;
+  public movieDetails$!: Observable<Movie | undefined>;
   
   constructor(private route: ActivatedRoute, private readonly movieFacade: MovieFacade) { }
 

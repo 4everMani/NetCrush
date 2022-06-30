@@ -13,9 +13,12 @@ import { WatchComponent } from './watch/watch.component';
 import { ReviewListComponent } from './review-list/review-list.component';
 import { ReviewComponent } from './review/review.component';
 import { ScreenPlayerComponent } from './screen-player/screen-player.component';
-import { SafePipe } from './safe.pipe';
+import { SafePipe } from './utilities/safe.pipe';
 import { MovieInfoComponent } from './movie-info/movie-info.component';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
+import { MyStuffComponent } from './my-stuff/my-stuff.component';
+import { WatchListComponent } from './watch-list/watch-list.component';
+import { FavouriteComponent } from './favourite/favourite.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +31,9 @@ import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
     ScreenPlayerComponent,
     SafePipe,
     MovieInfoComponent,
+    MyStuffComponent,
+    WatchListComponent,
+    FavouriteComponent,
   ],
   imports: [
     CommonModule,
@@ -39,7 +45,7 @@ import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
   ],
   providers: [
     MovieService,
-    MovieFacade,
+    // MovieFacade,
   ]
 })
 export class MovieModule { }

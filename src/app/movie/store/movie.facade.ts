@@ -1,54 +1,92 @@
-import { Injectable } from "@angular/core";
-import { BehaviorSubject, map, Observable, tap } from "rxjs";
-import { IReview } from "src/app/interfaces/i-review";
-import { IUser } from "src/app/interfaces/i-user";
-import { IMovie } from "../../interfaces/i-movie";
-import { MovieService } from "../services/movie.service";
+import { Injectable } from '@angular/core';
+import {
+  BehaviorSubject,
+  distinctUntilChanged,
+  map,
+  Observable,
+  shareReplay,
+  Subject,
+  tap,
+} from 'rxjs';
+import { Movie } from 'src/app/models/movie';
+import { MovieService } from '../services/movie.service';
 
-interface IMovieData {
-    movies: IMovie[],
+class MovieData {
+  movies?: Movie[] = [];
+  watchLater?: Movie[] = [];
 }
 
-@Injectable()
-export class MovieFacade{
+@Injectable({
+  providedIn: 'root',
+})
+export class MovieFacade {
+  private movieCollectionState = new MovieData();
 
-    private initialState: IMovieData = {movies: []}
+  private movieSubject = new BehaviorSubject<MovieData>(
+    this.movieCollectionState
+  );
 
-    private movieSubject = new BehaviorSubject<IMovieData>(this.initialState)
+  private dispatchMovieCollectionState$ = this.movieSubject.asObservable();
 
-    public movies$ = this.movieSubject.asObservable()
-                    .pipe(
-                        map(data => data.movies)
-                    );
+  public movies$ = this.dispatchMovieCollectionState$.pipe(
+    map((data) => {
+      return data.movies;
+    }),
+    distinctUntilChanged()
+  );
 
-    constructor(private readonly movieService: MovieService){
-        this.getAllMovies()
-        
+  public watchLaterMovies$ = this.dispatchMovieCollectionState$.pipe(
+    map((data) => {
+      return data.watchLater;
+    }),
+    distinctUntilChanged()
+  );
+
+  constructor(private readonly movieService: MovieService) {
+    console.log('constructor');
+  }
+
+  public getMoviesById(id: string | null): Observable<Movie | undefined> {
+    if (
+      this.movieCollectionState.movies !== undefined &&
+      this.movieCollectionState.movies.length === 0
+    ) {
+      this.getAllMovies();
     }
+    return this.movies$.pipe(
+      map((data) => data?.filter((movie) => movie.id === id)[0])
+    );
+  }
 
-    public getMoviesById(id: string | null): Observable<IMovie> {
-        if (this.initialState.movies.length === 0){
-            this.getAllMovies();
-        }
-        return this.movies$
-                .pipe(
-                    map(data => data.filter(movie => movie.id === id)[0])
-                );
-        
+  public getAllMovies(): Observable<Movie[] | undefined> {
+    const movies = this.movieSubject.getValue().movies;
+    if (movies !== undefined && movies.length === 0) {
+      this.movieService.getAllMovies().subscribe((data: Movie[]) => {
+        this.updateState({ ...this.movieCollectionState, movies: data });
+      });
     }
+    return this.movies$.pipe(shareReplay());
+  }
 
-    private getAllMovies(): void{
-        this.movieService.getAllMovies().
-        subscribe((data: IMovie[]) => {
-            this.initialState.movies = data;
-            this.movieSubject.next(this.initialState);
-            // console.log(data)
-        })
-    }
+  public updateState(state: MovieData) {
+    this.movieCollectionState = state;
+    this.movieSubject.next(state);
+    const a = this.movieSubject.getValue();
+  }
 
-    updateState(state: IMovieData){
-        console.log('state called')
-        this.movieSubject.next(state);
-    }
+  // public getWatchLaterMovies(): Observable<IMovie[]> {
+  //     // this.watchLaterMovies$.subscribe(console.log)
+  //     if (this.initialState.watchLater.length === 0){
 
+  //     }
+  //     return this.watchLaterMovies$;
+  // }
+
+  public addToWatchLater(movie: Movie): void {
+    this.movieCollectionState.watchLater?.push(movie);
+    this.updateState({
+      ...this.movieCollectionState,
+      watchLater: this.movieCollectionState.watchLater,
+    });
+  }
 }

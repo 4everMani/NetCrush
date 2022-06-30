@@ -1,0 +1,16 @@
+.card_flex {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-top: 50px;
+}
+
+.card_item {
+    margin: 10px !important;
+    padding: 0;
+    font-family: sans-serif;
+    width: 250px;
+    height: 305px;
+}

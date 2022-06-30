@@ -1,5 +1,5 @@
 
-<div class="box">
+<div class="box" *ngIf="movie">
     <div class="box_img">
         <img [src]="movie.imageURL" alt="">
     </div>
@@ -12,7 +12,7 @@
             <button class="fav" mat-icon-button color="warn">
                 <mat-icon>favorite</mat-icon>
             </button>
-            <button class="fav" mat-icon-button color="warn">
+            <button class="fav" mat-icon-button color="warn" (click)="addToWatchLater()">
                 <mat-icon>watch_later</mat-icon>
             </button>
             <button class="fav" routerLink="/movies/{{movie.id}}" mat-icon-button color="warn">

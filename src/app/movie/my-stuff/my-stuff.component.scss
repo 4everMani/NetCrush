@@ -1,0 +1,34 @@
+.container{
+    padding-top: 50px;
+}
+
+.fav_section {
+    margin-left: 20px;
+    color: #5b7e96;
+    font-size: 130%;
+    font-weight: 700;
+    line-height: 24px;
+}
+
+.fav_section:hover {
+    cursor: pointer;
+    color: white;
+}
+
+.watchlist {
+    color: #5b7e96;
+    font-size: 130%;
+    font-weight: 700;
+    line-height: 24px;
+}
+
+.watchlist:hover {
+    cursor: pointer;
+    color: white;
+}
+
+.selected {
+    color: white;
+    border-bottom: 1px solid white;
+}
+
