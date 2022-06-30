@@ -5,11 +5,11 @@ import { Movie } from 'src/app/models/movie';
 import { MovieFacade } from '../store/movie.facade';
 
 @Component({
-  selector: 'app-watch-list',
-  templateUrl: './watch-list.component.html',
-  styleUrls: ['./watch-list.component.scss']
+  selector: 'app-watch-later',
+  templateUrl: './watch-later.component.html',
+  styleUrls: ['./watch-later.component.scss']
 })
-export class WatchListComponent implements OnInit {
+export class WatchLaterComponent implements OnInit {
 
   public watchLaterMovies$!: Observable<Movie[] | undefined>
 

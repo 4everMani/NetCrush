@@ -17,7 +17,7 @@ import { SafePipe } from './utilities/safe.pipe';
 import { MovieInfoComponent } from './movie-info/movie-info.component';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { MyStuffComponent } from './my-stuff/my-stuff.component';
-import { WatchListComponent } from './watch-list/watch-list.component';
+import { WatchLaterComponent } from './watch-later/watch-later.component';
 import { FavouriteComponent } from './favourite/favourite.component';
 
 @NgModule({
@@ -32,7 +32,7 @@ import { FavouriteComponent } from './favourite/favourite.component';
     SafePipe,
     MovieInfoComponent,
     MyStuffComponent,
-    WatchListComponent,
+    WatchLaterComponent,
     FavouriteComponent,
   ],
   imports: [

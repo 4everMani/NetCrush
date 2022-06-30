@@ -12,7 +12,7 @@
       (click)="changeMode(mode.favourtie)"
       >Favourite</span
     >
-      <app-watch-list class="margin_top" *ngIf="isWatcLaterEnabled"></app-watch-list>
+      <app-watch-later class="margin_top" *ngIf="isWatcLaterEnabled"></app-watch-later>
       <app-favourite *ngIf="!isWatcLaterEnabled"></app-favourite>
   </div>
 </ng-container>

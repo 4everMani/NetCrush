@@ -4,7 +4,7 @@ import { AuthGurad } from '../services/auth.guard';
 import { FavouriteComponent } from './favourite/favourite.component';
 import { MovieListComponent } from './movie-list/movie-list.component';
 import { MyStuffComponent } from './my-stuff/my-stuff.component';
-import { WatchListComponent } from './watch-list/watch-list.component';
+import { WatchLaterComponent } from './watch-later/watch-later.component';
 import { WatchComponent } from './watch/watch.component';
 
 const routes: Routes = [
