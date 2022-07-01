@@ -1,1 +1,5 @@
-<p>favourite works!</p>
+<div class="card_flex">
+    <div class="card_item" *ngFor="let movie of favMovies$ | async">
+        <app-movie-item [movie]="movie"></app-movie-item>
+    </div>
+</div>

@@ -17,20 +17,32 @@ export class MovieItemComponent implements OnInit {
 
   public watchLater$!: Observable<boolean>;
 
+  public favourite$!: Observable<boolean>
+
   constructor(private readonly movieFacade: MovieFacade) { }
 
   ngOnInit(): void {
     if (this.movie?.id){
       this.watchLater$ = this.movieFacade.isWatchLaterMovie(this.movie.id)
+      this.favourite$ = this.movieFacade.isFavouriteMovie(this.movie.id)
     }
   }
 
-  public addToWatchLater(movie: boolean): void{
-    if (this.movie && movie){
+  public addToWatchLater(data: boolean): void{
+    if (this.movie && data){
       this.movieFacade.addToWatchLater(this.movie)
     }
-    else if (this.movie?.id && !movie){
+    else if (this.movie?.id && !data){
       this.movieFacade.removeFromWatchLater(this.movie.id)
+    }
+  }
+
+  public addToFavourite(data: boolean): void{
+    if (this.movie && data){
+      this.movieFacade.addToFav(this.movie)
+    }
+    else if (this.movie?.id && !data){
+      this.movieFacade.removeFav(this.movie.id)
     }
   }
 

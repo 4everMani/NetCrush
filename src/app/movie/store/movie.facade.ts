@@ -14,6 +14,7 @@ import {
   switchMap,
   tap,
 } from 'rxjs';
+import { Favourite } from 'src/app/models/favourite';
 import { Movie } from 'src/app/models/movie';
 import { WatchLater } from 'src/app/models/watch-later';
 import { MovieService } from '../services/movie.service';
@@ -22,13 +23,15 @@ class MovieData {
   movies?: Movie[] = [];
   watchLater?: Movie[] = [];
   watchLaterData?: WatchLater[] = [];
-
+  favouriteMovie?: Movie[] = [];
+  favouriteData?: Favourite[] = [];
 }
 
 @Injectable({
   providedIn: 'root',
 })
 export class MovieFacade {
+
   private movieCollectionState = new MovieData();
 
   private movieSubject = new BehaviorSubject<MovieData>(
@@ -51,9 +54,14 @@ export class MovieFacade {
     distinctUntilChanged()
   );
 
+  public favouriteMovies$ = this.dispatchMovieCollectionState$.pipe(
+    map((data) => {
+      return data.favouriteMovie;
+    }),
+    distinctUntilChanged()
+  );
+
   constructor(private readonly movieService: MovieService) {
-    console.log('constructor');
-    // this.getWatchLaterMovies().subscribe()
   }
 
   public getMoviesById(id: string | null): Observable<Movie | undefined> {
@@ -91,7 +99,7 @@ export class MovieFacade {
             .pipe(
                 switchMap(movies => this.movieService.getWatchLaterMovies()),
                 tap(data => this.updateState({...this.movieCollectionState, watchLaterData: data})),
-                concatMap(data => this.addToWatchLaterMovie(data)),
+                concatMap(data => this.addToMoviesSection(data)),
                 tap(movies => this.updateState({...this.movieCollectionState, watchLater: movies})),
                 shareReplay()
             )            
@@ -110,7 +118,7 @@ export class MovieFacade {
     }
   }
 
-  private addToWatchLaterMovie(data: WatchLater[]): Observable<Movie[]>{
+  private addToMoviesSection(data: WatchLater[] | Favourite[]): Observable<Movie[]>{
     const movies = this.movieSubject.getValue().movies;
     const movieArr: Movie[] = [];
     if (movies){
@@ -150,6 +158,51 @@ export class MovieFacade {
         })  
     }
   }
-  
+
+
+  public getAllFavuoriteMovies(): Observable<Movie[] | undefined>{
+    if (this.movieCollectionState.favouriteMovie!== undefined &&
+        this.movieCollectionState.favouriteMovie.length === 0){
+            return this.getAllMovies()
+            .pipe(
+                switchMap(movies => this.movieService.getFavouriteMovieDetails()),
+                tap(data => this.updateState({...this.movieCollectionState, favouriteData: data})),
+                concatMap(data => this.addToMoviesSection(data)),
+                tap(movies => this.updateState({...this.movieCollectionState, favouriteMovie: movies})),
+                shareReplay()
+            )            
+      }
+      return this.favouriteMovies$;
+  }
+
+  public isFavouriteMovie(movieId: string): Observable<boolean>{
+    return this.getAllFavuoriteMovies()
+            .pipe(
+                map(movies => this.isMovieMatched(movies,movieId)),
+                shareReplay()
+            )
+  }
+
+  public addToFav(movie: Movie): void{
+    if (!this.movieCollectionState.favouriteMovie?.includes(movie)){
+        this.movieCollectionState.favouriteMovie?.push(movie);
+    this.updateState({
+      ...this.movieCollectionState,
+      favouriteMovie: this.movieCollectionState.watchLater,
+    });
+    this.movieService.addToFavourite(movie.id);
+    }
+  }
+
+  public removeFav(movieId: string): void{
+    const item = this.movieCollectionState.favouriteData;
+    if (item){
+        item.forEach(data => {
+            if (data.movieId === movieId){
+                this.movieService.removeFavourite(data)  
+            }
+        })  
+    }
+  }
 
 }

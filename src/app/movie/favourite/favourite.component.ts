@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { Movie } from 'src/app/models/movie';
+import { MovieFacade } from '../store/movie.facade';
 
 @Component({
   selector: 'app-favourite',
@@ -7,9 +10,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FavouriteComponent implements OnInit {
 
-  constructor() { }
+  public favMovies$!: Observable<Movie[] | undefined>
+
+  constructor(private readonly moviefacade: MovieFacade) { }
 
   ngOnInit(): void {
+    this.favMovies$ = this.moviefacade.getAllFavuoriteMovies();
   }
 
 }
