@@ -16,7 +16,7 @@ export class WatchLaterComponent implements OnInit {
   constructor(private readonly moviefacade: MovieFacade) { }
 
   ngOnInit(): void {
-    this.watchLaterMovies$ = this.moviefacade.watchLaterMovies$;
+    this.watchLaterMovies$ = this.moviefacade.getWatchLaterMovies();
   }
 
 }
