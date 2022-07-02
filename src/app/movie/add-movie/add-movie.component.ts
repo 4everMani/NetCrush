@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { IMovie } from 'src/app/interfaces/i-movie';
+import { MovieFacade } from '../store/movie.facade';
 
 @Component({
   selector: 'app-add-movie',
@@ -8,13 +10,14 @@ import { NgForm } from '@angular/forms';
 })
 export class AddMovieComponent implements OnInit {
 
-  constructor() { }
+  constructor(private readonly movieFacade: MovieFacade) { }
 
   ngOnInit(): void {
   }
 
   public onAddMovie(data: NgForm): void{
-    console.log(data.value)
+    console.log(data.value as IMovie)
+    this.movieFacade.addMovie(data.value as IMovie)
   }
 
 }

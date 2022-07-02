@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { Router } from '@angular/router';
 import { concatMap, map, Observable, of, shareReplay, Subject, Subscription, take, tap } from 'rxjs';
 import { IMovie } from 'src/app/interfaces/i-movie';
 import { IWatchLater } from 'src/app/interfaces/i-watch-later';
@@ -18,7 +19,9 @@ export class MovieService {
 
   private email?: string;
   
-  constructor(private userfacade: AuthFacade, private db: AngularFirestore) {
+  constructor(private userfacade: AuthFacade,
+              private db: AngularFirestore,
+              private router: Router) {
     this.emailSubscription = this.userfacade.user$.subscribe(user => {
       this.email = user?.email
     })
@@ -116,6 +119,13 @@ export class MovieService {
         this.db.collection('favouriteMovies').doc(id).delete();
       }
      })
+  }
+
+  public addMovieToLibrary(movie: IMovie): void{
+    this.db.collection<IMovie>('movies').add(movie)
+            .then(() => {
+              this.router.navigateByUrl('/movies')
+            })
   }
 
 
