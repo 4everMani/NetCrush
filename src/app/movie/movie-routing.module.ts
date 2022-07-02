@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AddMovieGuard } from '../services/add-movie.guard';
 import { AuthGurad } from '../services/auth.guard';
+import { AddMovieComponent } from './add-movie/add-movie.component';
 import { FavouriteComponent } from './favourite/favourite.component';
 import { MovieListComponent } from './movie-list/movie-list.component';
 import { MyStuffComponent } from './my-stuff/my-stuff.component';
@@ -21,17 +23,12 @@ const routes: Routes = [
     path: "mystuff",
     canActivate: [AuthGurad],
     component: MyStuffComponent,
-    // children: [
-    //   {
-    //     path: "watchlist",
-    //     component: WatchListComponent
-    //   },
-    //   {
-    //     path: "favourite",
-    //     component: FavouriteComponent
-    //   }
-    // ]
   },
+  {
+    path: "addMovie",
+    component: AddMovieComponent,
+    canActivate: [AddMovieGuard]
+  }
 
 ];
 
@@ -39,7 +36,8 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
   providers: [
-    AuthGurad
+    AuthGurad,
+    AddMovieGuard
   ]
 })
 export class MovieRoutingModule { }

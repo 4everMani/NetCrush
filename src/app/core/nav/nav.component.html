@@ -15,6 +15,12 @@
             <mat-icon class="icon-gap">video_library</mat-icon>
             <span>MyStuff</span>
         </button>
+        <span class="mt-2" *ngIf="(authFacade.user$ | async) as user">
+            <button *ngIf="user.email === admin.EMAIL" class="button" mat-button [routerLink]="'addMovie'">
+                <mat-icon class="icon-gap">add_to_queue</mat-icon>
+                <span>Add Movie</span>
+            </button>
+        </span>
         <div class="ms-auto mt-1">
             <button class="button dropdown-toggle" mat-button [mat-menu-trigger-for]="language_dropdown">
                 <mat-icon class="">language</mat-icon>

@@ -14,6 +14,7 @@ import {
   switchMap,
   tap,
 } from 'rxjs';
+import { IMovie } from 'src/app/interfaces/i-movie';
 import { Favourite } from 'src/app/models/favourite';
 import { Movie } from 'src/app/models/movie';
 import { WatchLater } from 'src/app/models/watch-later';
@@ -203,6 +204,10 @@ export class MovieFacade {
             }
         })  
     }
+  }
+
+  public addMovie(movie: IMovie): void{
+    this.movieService.addMovieToLibrary(movie);
   }
 
 }
