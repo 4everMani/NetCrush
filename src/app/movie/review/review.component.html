@@ -1,11 +1,11 @@
-<div class="comment_container">
+<div class="comment_container" *ngIf="comment">
     <div class="comment">
-        <div class="d-flex">
-            <h6 class="text_align">Manish J.</h6>
-            <div class="date">12/03/2022</div>
+        <div class="flex">
+            <h6><strong>{{comment?.commentedBy}}</strong></h6>
+            <div>{{comment?.date}}</div>
         </div>
         <div>
-            <p class="text_align">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
+            <p class="text_align">{{comment?.comment}}</p>
         </div>
     </div>
 </div>
