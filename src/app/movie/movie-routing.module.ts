@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthGurad } from '../services/auth.guard';
+import { AddMovieComponent } from './add-movie/add-movie.component';
 import { FavouriteComponent } from './favourite/favourite.component';
 import { MovieListComponent } from './movie-list/movie-list.component';
 import { MyStuffComponent } from './my-stuff/my-stuff.component';
@@ -32,6 +33,10 @@ const routes: Routes = [
     //   }
     // ]
   },
+  {
+    path: "addMovie",
+    component: AddMovieComponent
+  }
 
 ];
 

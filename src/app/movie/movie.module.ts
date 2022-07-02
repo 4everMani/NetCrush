@@ -19,6 +19,8 @@ import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { MyStuffComponent } from './my-stuff/my-stuff.component';
 import { WatchLaterComponent } from './watch-later/watch-later.component';
 import { FavouriteComponent } from './favourite/favourite.component';
+import { AddMovieComponent } from './add-movie/add-movie.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -34,6 +36,7 @@ import { FavouriteComponent } from './favourite/favourite.component';
     MyStuffComponent,
     WatchLaterComponent,
     FavouriteComponent,
+    AddMovieComponent,
   ],
   imports: [
     CommonModule,
@@ -41,6 +44,7 @@ import { FavouriteComponent } from './favourite/favourite.component';
     HttpClientModule,
     MaterialModule,
     AngularFirestoreModule,
+    FormsModule
     
   ],
   providers: [

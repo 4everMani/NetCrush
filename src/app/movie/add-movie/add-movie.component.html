@@ -1,0 +1,108 @@
+<ng-container>
+    <div class="container">
+        <form class="form" #f="ngForm" (ngSubmit)="onAddMovie(f)">
+            <mat-form-field>
+              <input
+                matInput
+                ngModel
+                name="title"
+                placeholder="Title"
+                required
+                #title="ngModel"
+              />
+              <mat-error *ngIf="title.hasError('required')"
+                >Field must not be empty</mat-error
+              >
+            </mat-form-field>
+        
+            <mat-form-field appearance="standard">
+            <mat-label>Genre</mat-label>
+            <select matNativeControl name="genre" ngModel required #genre="ngModel">
+                <option value="Comedey">Comedey</option>
+                <option value="Science">Science</option>
+                <option value="Thriller">Thriller</option>
+                <option value="Adventure">Adventure</option>
+                <option value="Sci-Fi">Sci-Fi</option>
+                <option value="Drama">Drama</option>
+                <option value="Horror">Horror</option>
+                <option value="Romance">Romance</option>
+                <option value="Action">Action</option>
+
+            </select>
+            <mat-error *ngIf="genre.hasError('required')"
+                >Field must not be empty</mat-error
+              >
+            </mat-form-field>
+        
+            <mat-form-field>
+              <input
+                matInput
+                ngModel
+                name="language"
+                placeholder="Language"
+                #language="ngModel"
+                required="ngModel"
+              />
+              <mat-error *ngIf="language.hasError('required')"
+                >Field must not be empty</mat-error
+              >
+              <!-- <mat-error *ngIf="!language.hasError('required')"
+                >Email is invalid</mat-error
+              > -->
+            </mat-form-field>
+            <mat-form-field>
+              <input
+                matInput
+                ngModel
+                name="imdbRating"
+                placeholder="ImdbRating"
+                required
+                #imdbRating="ngModel"
+              />
+              <mat-error *ngIf="language.hasError('required')"
+              >Field must not be empty</mat-error>
+              <!-- <mat-hint align="end">{{ pwInput.value?.length }}/6</mat-hint> -->
+              <!-- <mat-error>atleast 6 characters required</mat-error> -->
+            </mat-form-field>
+            <mat-form-field>
+              <input
+                matInput
+                ngModel
+                name="imageURL"
+                placeholder="ImageURL"
+                #imageURL="ngModel"
+              />
+            </mat-form-field>
+            <mat-form-field>
+                <input
+                  matInput
+                  ngModel
+                  name="youtubeURL"
+                  placeholder="YoutubeURL"
+                  #youtubeURL="ngModel"
+                />
+              </mat-form-field>
+
+              <mat-form-field class="example-full-width" appearance="standard">
+                <mat-label>Description</mat-label>
+                <textarea
+                    matInput 
+                    name="description" 
+                    ngModel
+                    maxlength="100"
+                    required
+                    #description="ngModel"
+                >
+                </textarea>
+                <mat-hint>100 charcters allowed</mat-hint>
+                <mat-hint align="end">{{description.value?.length}}/100</mat-hint>
+                <mat-error *ngIf="description.hasError('required')"
+                >Field must not be empty</mat-error>
+              </mat-form-field>
+
+            <mat-checkbox class="p-2 checkbox" ngModel name="isPrimeMovie">Add to Prime Movie</mat-checkbox>
+            <button mat-raised-button [disabled]="f.invalid">Submit</button>
+          </form>
+    </div>
+</ng-container>
+
