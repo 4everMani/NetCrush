@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Router } from '@angular/router';
 import { concatMap, map, Observable, of, shareReplay, Subject, Subscription, take, tap } from 'rxjs';
+import { IComment } from 'src/app/interfaces/i-comment';
 import { IMovie } from 'src/app/interfaces/i-movie';
 import { IWatchLater } from 'src/app/interfaces/i-watch-later';
 import { Favourite } from 'src/app/models/favourite';
@@ -18,12 +19,15 @@ export class MovieService {
   private emailSubscription!: Subscription;
 
   private email?: string;
+
+  private name?: string;
   
   constructor(private userfacade: AuthFacade,
               private db: AngularFirestore,
               private router: Router) {
     this.emailSubscription = this.userfacade.user$.subscribe(user => {
-      this.email = user?.email
+      this.email = user?.email;
+      this.name = user?.firstName;
     })
    }
 
@@ -126,6 +130,16 @@ export class MovieService {
             .then(() => {
               this.router.navigateByUrl('/movies')
             })
+  }
+
+  public addCommentToDb(data: IComment): void{
+    data.commentedBy = this.name;
+    this.db.collection<IComment>('comments').add(data);
+  }
+
+  public getComment(movieId: string): Observable<IComment[]>{
+      return this.db.collection<IComment>('comments', ref => ref.where('movieId', '==', movieId)).valueChanges()
+      .pipe(shareReplay());
   }
 
 

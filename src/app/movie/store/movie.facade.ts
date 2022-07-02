@@ -14,6 +14,7 @@ import {
   switchMap,
   tap,
 } from 'rxjs';
+import { IComment } from 'src/app/interfaces/i-comment';
 import { IMovie } from 'src/app/interfaces/i-movie';
 import { Favourite } from 'src/app/models/favourite';
 import { Movie } from 'src/app/models/movie';
@@ -208,6 +209,19 @@ export class MovieFacade {
 
   public addMovie(movie: IMovie): void{
     this.movieService.addMovieToLibrary(movie);
+  }
+
+  public addComment(text: string, movieId: string): void{
+    const currentTimeDate = `${new Date().getHours()}:${new Date().getMinutes()} ${new Date().getDay()}-${new Date().getMonth()}-${new Date().getFullYear()}`
+    const input : IComment = {movieId: movieId, date: currentTimeDate, comment: text}
+    this.movieService.addCommentToDb(input);
+  }
+
+  public getCommentByMovieId(movieId: string): Observable<IComment[] | undefined>{
+    return this.movieService.getComment(movieId)
+            .pipe(
+                map(res => res.length === 0 ? undefined : res)
+            );
   }
 
 }
