@@ -14,10 +14,14 @@ export class MovieListComponent implements OnInit {
 
   public movies$!: Observable<Movie[] | undefined>;
 
+  public searchResult$!: Observable<Movie[] | undefined>;
+
   constructor(private readonly movieFacade: MovieFacade) { }
 
   ngOnInit(): void {
-    this.movies$ = this.movieFacade.getAllMovies();
+    this.movies$ = this.movieFacade.movies$;
+    this.searchResult$ = this.movieFacade.searchMovieDispatch$;
+    this.movieFacade.setSearchState();
   }
 
 }

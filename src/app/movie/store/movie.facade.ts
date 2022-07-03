@@ -12,6 +12,7 @@ import {
   shareReplay,
   Subject,
   switchMap,
+  take,
   tap,
 } from 'rxjs';
 import { IComment } from 'src/app/interfaces/i-comment';
@@ -40,7 +41,11 @@ export class MovieFacade {
     this.movieCollectionState
   );
 
-  private dispatchMovieCollectionState$ = this.movieSubject.asObservable();
+  private searchMovieSubject = new BehaviorSubject<Movie[] | undefined>(undefined);
+
+  public searchMovieDispatch$ = this.searchMovieSubject.asObservable();
+
+  private dispatchMovieCollectionState$ = this.movieSubject.asObservable().pipe(distinctUntilChanged());
 
   public movies$ = this.dispatchMovieCollectionState$.pipe(
     map((data) => {
@@ -64,6 +69,7 @@ export class MovieFacade {
   );
 
   constructor(private readonly movieService: MovieService) {
+    this.getAllMovies();
   }
 
   public getMoviesById(id: string | null): Observable<Movie | undefined> {
@@ -79,13 +85,14 @@ export class MovieFacade {
   }
 
   public getAllMovies(): Observable<Movie[] | undefined> {
+    console.log('get all movie called')
     const movies = this.movieSubject.getValue().movies;
     if (movies !== undefined && movies.length === 0) {
       this.movieService.getAllMovies().subscribe((data: Movie[]) => {
         this.updateState({ ...this.movieCollectionState, movies: data });
       });
     }
-    return this.movies$.pipe(shareReplay());
+    return this.movies$.pipe(distinctUntilChanged());
   }
 
   public updateState(state: MovieData) {
@@ -222,6 +229,25 @@ export class MovieFacade {
             .pipe(
                 map(res => res.length === 0 ? undefined : res)
             );
+  }
+
+  public getSearchResult(searchString: string): void{
+    const result = this.searchResult(this.movieCollectionState.movies, searchString);
+    this.searchMovieSubject.next(result);
+  }
+
+  public searchResult(arr?: Movie[], str?: string): Movie[] | undefined{
+    if (arr && arr.length > 0 && str){
+        return arr.filter(x => Object.values(x)
+                        .join(' ')
+                        .toLowerCase()
+                        .includes(str.toLowerCase()))
+    }
+        return undefined;
+  }
+
+  public setSearchState(): void{
+    this.searchMovieSubject.next(undefined);
   }
 
 }
