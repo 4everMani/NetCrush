@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { Route, Router } from '@angular/router';
 import { map, Observable, switchAll, switchMap } from 'rxjs';
 import { Movie } from 'src/app/models/movie';
+import { AuthFacade } from 'src/app/store/auth.facade';
 import { IMovie } from '../../interfaces/i-movie';
 import { PrimeActivateComponent } from '../prime-activate/prime-activate.component';
 import { MovieService } from '../services/movie.service';
@@ -25,7 +26,8 @@ export class MovieItemComponent implements OnInit {
   constructor(
     private readonly movieFacade: MovieFacade,
     private readonly matDialog: MatDialog,
-    private readonly router: Router
+    private readonly router: Router,
+    public authFacade: AuthFacade
   ) {}
 
   ngOnInit(): void {
