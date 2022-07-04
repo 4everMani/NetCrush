@@ -5,6 +5,9 @@
     </div>
     <div class="content">
         <h3>{{movie.title}}</h3>
+        <div *ngIf="movie.isPrimeMovie">
+            <img src="https://m.media-amazon.com/images/G/01/digital/video/web/cues/v3/prime.svg" alt="">
+        </div>
         <p>Imdb {{movie.imdbRating}}/10</p>
     </div>
     <div class="button">
