@@ -3,14 +3,31 @@
         <a [routerLink]="'/movies'">
             <img class="img_size" src="../../../../assets/images/logo.jpg" alt="">
         </a>
-        <button class="button" mat-button routerLink="/movies">
+        <button class="button" mat-button (click)="navigateToHome()">
             <mat-icon class="icon-gap">movie</mat-icon>
             <span>Movies</span>
         </button>
-        <button class="button" mat-button routerLink="">
+        <button class="button" mat-button [mat-menu-trigger-for]="category_dropdown">
             <mat-icon class="icon-gap">movie_filter</mat-icon>
             <span>Category</span>
         </button>
+        <mat-menu #category_dropdown class="menu menu_width">
+            <span class="d-flex">
+                <button class="button" mat-menu-item (click)="onSelect('Comedy')">Comedy</button>
+                <button class="button" mat-menu-item  (click)="onSelect('Science')">Science</button>
+                <button class="button" mat-menu-item (click)="onSelect('Thriller')">Thriller</button>
+            </span>
+            <span class="d-flex">
+                <button class="button" mat-menu-item  (click)="onSelect('Adventure')">Adventure</button>
+                <button class="button" mat-menu-item  (click)="onSelect('Sci-Fi')">Sci-Fi</button>
+                <button class="button" mat-menu-item  (click)="onSelect('Drama')">Drama</button>
+            </span>
+            <span class="d-flex">
+                <button class="button" mat-menu-item  (click)="onSelect('Romance')">Romance</button>
+                <button class="button" mat-menu-item (click)="onSelect('Action')">Action</button>
+                <button class="button" mat-menu-item (click)="onSelect('Horror')">Horror</button>
+            </span>
+        </mat-menu>
         <button class="button" mat-button [routerLink]="'mystuff'">
             <mat-icon class="icon-gap">video_library</mat-icon>
             <span>MyStuff</span>

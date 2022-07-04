@@ -21,6 +21,8 @@ import { WatchLaterComponent } from './watch-later/watch-later.component';
 import { FavouriteComponent } from './favourite/favourite.component';
 import { AddMovieComponent } from './add-movie/add-movie.component';
 import { FormsModule } from '@angular/forms';
+import { PrimeActivateComponent } from './prime-activate/prime-activate.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -37,14 +39,17 @@ import { FormsModule } from '@angular/forms';
     WatchLaterComponent,
     FavouriteComponent,
     AddMovieComponent,
+    PrimeActivateComponent
   ],
+  entryComponents: [PrimeActivateComponent],
   imports: [
     CommonModule,
     MovieRoutingModule,
     HttpClientModule,
     MaterialModule,
     AngularFirestoreModule,
-    FormsModule
+    FormsModule,
+    // BrowserAnimationsModule
     
   ],
   providers: [

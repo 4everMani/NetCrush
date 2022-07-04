@@ -4,10 +4,14 @@
         <img [src]="movie.imageURL" alt="">
     </div>
     <div class="content">
-        <h3>{{movie.title}}</h3>
+        <h3>{{movie.title}}<span *ngIf="movie.isPrimeMovie"><img src="https://m.media-amazon.com/images/G/01/digital/video/web/cues/v3/prime.svg" alt="">
+        </span></h3>
+        <!-- <div >
+            <img src="https://m.media-amazon.com/images/G/01/digital/video/web/cues/v3/prime.svg" alt="">
+        </div> -->
         <p>Imdb {{movie.imdbRating}}/10</p>
     </div>
-    <div class="button">
+    <div class="button" *ngIf="authFacade.user$ | async">
         <div class="icon_flex">
             <button *ngIf="favourite$ | async" class="fav" mat-icon-button color="warn" (click)="addToFavourite(false)">
                 <mat-icon>favorite</mat-icon>
@@ -21,7 +25,7 @@
                 <button *ngIf="!(watchLater$ | async)" class="fav color" mat-icon-button (click)="addToWatchLater(true)">
                     <mat-icon>watch_later</mat-icon>
                 </button>
-            <button class="fav"  routerLink="/movies/{{movie.id}}" mat-icon-button color="warn" >
+            <button class="fav" (click)="onMovieSelect(movie)" mat-icon-button color="warn" >
                 <mat-icon>play_circle_filled</mat-icon>
             </button>
         </div>
