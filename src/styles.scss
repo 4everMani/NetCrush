@@ -11,3 +11,11 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     background-color: #273646;
     // background-color: white;
 }
+
+.mat-dialog-container {
+    padding: 0 !important;
+}
+
+.cdk-overlay-dark-backdrop {
+    background: rgb(1 1 1 / 86%);
+}

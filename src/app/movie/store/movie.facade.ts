@@ -250,4 +250,15 @@ export class MovieFacade {
     this.searchMovieSubject.next(undefined);
   }
 
+  public addPrimeMember(canPrimeMemberAdd: boolean): Observable<boolean>{
+    if (canPrimeMemberAdd){
+      return this.movieService.addPrimeCustomer();
+    }
+    return of(false)
+  }
+
+  public isUserPrime():Observable<boolean>{
+    return this.movieService.isUserPrime();
+  }
+
 }

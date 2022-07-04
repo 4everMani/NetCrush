@@ -21,7 +21,7 @@
                 <button *ngIf="!(watchLater$ | async)" class="fav color" mat-icon-button (click)="addToWatchLater(true)">
                     <mat-icon>watch_later</mat-icon>
                 </button>
-            <button class="fav"  routerLink="/movies/{{movie.id}}" mat-icon-button color="warn" >
+            <button class="fav"  (click)="onMovieSelect(movie)" mat-icon-button color="warn" >
                 <mat-icon>play_circle_filled</mat-icon>
             </button>
         </div>

@@ -1,0 +1,21 @@
+.container{
+    width: 300px;
+    height: fit-content;
+    margin: 0;
+    padding: 0;
+}
+
+.header {
+    height: 50px;
+    background: #364b60;
+}
+
+button {
+    border-radius: 20px;
+    background: #364b60;
+}
+
+.align_button {
+    display: flex;
+    justify-content: end;
+}
