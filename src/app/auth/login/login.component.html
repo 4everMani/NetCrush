@@ -1,7 +1,7 @@
 <div class="login_container">
     <div class="login_content">
         <div class="login_header">
-            <h1>Sign In</h1>
+            <h1>{{'Sign In' | translate}}</h1>
         </div>
         <form class="form" #f="ngForm" (ngSubmit)="onSignIn(f)">
             <mat-form-field>
@@ -10,16 +10,16 @@
                   matInput
                   ngModel
                   name="email"
-                  placeholder="Email"
+                  placeholder= "Email"
                   email
                   required
                   #emailInput="ngModel"
                 />
                 <mat-error *ngIf="emailInput.hasError('required')"
-                  >Field must not be empty</mat-error
+                  >{{'Field must not be empty' | translate}}</mat-error
                 >
                 <mat-error *ngIf="!emailInput.hasError('required')"
-                  >Email is invalid</mat-error
+                  >{{'Email is invalid' | translate}}</mat-error
                 >
               </mat-form-field>
               <mat-form-field>
@@ -34,11 +34,11 @@
                   #pwInput="ngModel"
                 />
               </mat-form-field>
-              <button mat-raised-button [disabled]="f.invalid">SIGN IN</button>
+              <button mat-raised-button [disabled]="f.invalid">{{'Sign In' | translate}}</button>
         </form>
         <div class="login_footer">
-            <p>Don't have an account?</p>
-            <a [routerLink]="'/register'"><h5>SIGN UP NOW</h5></a>
+            <p>{{"Don't have an account?" | translate}}</p>
+            <a [routerLink]="'/register'"><h5>{{'SIGN UP NOW' | translate}}</h5></a>
         </div>
     </div>
 </div>

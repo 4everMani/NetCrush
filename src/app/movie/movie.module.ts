@@ -6,7 +6,7 @@ import { MovieItemComponent } from './movie-item/movie-item.component';
 import { MovieListComponent } from './movie-list/movie-list.component';
 import { MovieService } from './services/movie.service';
 import { MovieFacade } from './store/movie.facade';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { MaterialModule } from '../material/material.module';
 import { SearchComponent } from './search/search.component';
 import { WatchComponent } from './watch/watch.component';
@@ -23,6 +23,12 @@ import { AddMovieComponent } from './add-movie/add-movie.component';
 import { FormsModule } from '@angular/forms';
 import { PrimeActivateComponent } from './prime-activate/prime-activate.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+
+export function HttpLoaderFactory(http: HttpClient) {
+  return new TranslateHttpLoader(http, '../../assets/i18n', '.json')
+}
 
 @NgModule({
   declarations: [
@@ -44,6 +50,15 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
   entryComponents: [PrimeActivateComponent],
   imports: [
     CommonModule,
+    HttpClientModule,
+    TranslateModule.forChild({
+      defaultLanguage: 'en-US',
+      loader: {
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient]
+      }
+    }),
     MovieRoutingModule,
     HttpClientModule,
     MaterialModule,

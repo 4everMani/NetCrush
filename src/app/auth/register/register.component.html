@@ -12,7 +12,7 @@
                 #firstname="ngModel"
               />
               <mat-error *ngIf="firstname.hasError('required')"
-                >Field must not be empty</mat-error
+                >{{'Field must not be empty' | translate}}</mat-error
               >
             </mat-form-field>
         
@@ -26,7 +26,7 @@
                 #lastName="ngModel"
               />
               <mat-error *ngIf="lastName.hasError('required')"
-                >Field must not be empty</mat-error
+                >{{'Field must not be empty' | translate}}</mat-error
               >
             </mat-form-field>
         
@@ -42,13 +42,13 @@
                 #emailInput="ngModel"
               />
               <mat-error *ngIf="emailInput.hasError('required')"
-                >Field must not be empty</mat-error
+                >{{'Field must not be empty' | translate}}</mat-error
               >
               <mat-error *ngIf="!emailInput.hasError('required')"
-                >Email is invalid</mat-error
+                >{{'Email is invalid' | translate}}</mat-error
               >
             </mat-form-field>
-            <mat-form-field hintLabel="Should be atleast 6 characters long">
+            <mat-form-field hintLabel="">
               <input
                 type="password"
                 matInput
@@ -59,11 +59,12 @@
                 minlength="6"
                 #pwInput="ngModel"
               />
+              <mat-hint>{{'Should be atleast 6 characters long' | translate}}</mat-hint>
               <mat-hint align="end">{{ pwInput.value?.length }}/6</mat-hint>
-              <mat-error>atleast 6 characters required</mat-error>
+              <mat-error>{{'atleast 6 characters required' | translate}}</mat-error>
             </mat-form-field>
             <mat-form-field appearance="standard">
-              <mat-label>DOB</mat-label>
+              <mat-label>{{'DOB' | translate}}</mat-label>
               <input
                 matInput
                 [matDatepicker]="picker"
@@ -74,18 +75,17 @@
                 required
                 #date="ngModel"
               />
-              <mat-hint>DD/MM/YYYY</mat-hint>
+              <mat-hint>{{'DD/MM/YYYY' | translate}}</mat-hint>
               <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
               <mat-datepicker #picker></mat-datepicker>
               <mat-error *ngIf="date.hasError('required')"
-                >Field must not be empty</mat-error
+                >{{'Field must not be empty' | translate}}</mat-error
               >
               <mat-error *ngIf="!date.hasError('required')"
-                >Date is not valid</mat-error
+                >{{'Date is not valid' | translate}}</mat-error
               >
             </mat-form-field>
-            <mat-checkbox class="p-2 checkbox" ngModel name="isPrime">Opt for Prime services</mat-checkbox>
-            <button mat-raised-button [disabled]="f.invalid">Submit</button>
+            <button mat-raised-button [disabled]="f.invalid">{{'Submit' | translate}}</button>
           </form>
     </div>
 

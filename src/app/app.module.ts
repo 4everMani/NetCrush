@@ -17,6 +17,13 @@ import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 import { AngularFireModule } from '@angular/fire/compat';
 import { AuthFacade } from './store/auth.facade';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+
+export function HttpLoaderFactory(http: HttpClient) {
+  return new TranslateHttpLoader(http, './assets/i18n/', '.json')
+}
 
 
 @NgModule({
@@ -26,6 +33,15 @@ import { AngularFireAuthModule } from '@angular/fire/compat/auth';
     RegisterComponent
   ],
   imports: [
+    HttpClientModule,
+    TranslateModule.forRoot({
+      defaultLanguage: 'en-US',
+      loader: {
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient]
+      }
+    }),
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
