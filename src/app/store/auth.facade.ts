@@ -52,7 +52,10 @@ export class AuthFacade {
     .then(res => {
         this.storeUser(res.user)
         this.router.navigateByUrl("/movies");
-      });
+      })
+    .catch((err) => {
+      alert(err)
+    })
   }
 
   /**
