@@ -40,6 +40,7 @@ export class AuthFacade {
         });
       })
       .catch((error) => {
+        alert(error);
         console.log(error);
       });
   }
