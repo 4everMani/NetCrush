@@ -23,7 +23,12 @@ const routes: Routes = [
     path:'register',
     component: RegisterComponent,
     canActivate: [LoginGuard]
-  }
+  },
+  {
+    path:"**",
+    redirectTo: "/movies",
+    pathMatch: "full",
+  },
 ];
 
 @NgModule({
