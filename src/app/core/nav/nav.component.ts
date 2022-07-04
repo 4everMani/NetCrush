@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
 import { Observable } from 'rxjs';
 import { Admin } from 'src/app/aap-constants';
 import { IUser } from 'src/app/interfaces/i-user';
@@ -17,7 +18,8 @@ export class NavComponent implements OnInit {
 
   constructor(public readonly authFacade: AuthFacade,
               private readonly movieFacade: MovieFacade,
-              private readonly router: Router) { }
+              private readonly router: Router,
+              private readonly translateService: TranslateService) { }
 
   ngOnInit(): void {
   }
@@ -34,6 +36,10 @@ export class NavComponent implements OnInit {
   public navigateToHome(): void{
     this.movieFacade.setSearchState();
     this.router.navigateByUrl('/movies');
+  }
+
+  public setLanguage(languageCode: string){
+    this.translateService.use(languageCode);
   }
 
 }

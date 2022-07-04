@@ -219,7 +219,7 @@ export class MovieFacade {
   }
 
   public addComment(text: string, movieId: string): void{
-    const currentTimeDate = `${new Date().getHours()}:${new Date().getMinutes()} ${new Date().getDay()}-${new Date().getMonth()}-${new Date().getFullYear()}`
+    const currentTimeDate = `${new Date().getHours()}:${new Date().getMinutes()} ${new Date().getDate()}-${new Date().getMonth()}-${new Date().getFullYear()}`;
     const input : IComment = {movieId: movieId, date: currentTimeDate, comment: text}
     this.movieService.addCommentToDb(input);
   }

@@ -5,37 +5,31 @@
         </a>
         <button class="button" mat-button (click)="navigateToHome()">
             <mat-icon class="icon-gap">movie</mat-icon>
-            <span>Movies</span>
+            <span>{{'Movies' | translate}}</span>
         </button>
         <button class="button" mat-button [mat-menu-trigger-for]="category_dropdown">
             <mat-icon class="icon-gap">movie_filter</mat-icon>
-            <span>Category</span>
+            <span>{{'Category' | translate}}</span>
         </button>
         <mat-menu #category_dropdown class="menu menu_width">
-            <span class="d-flex">
-                <button class="button" mat-menu-item (click)="onSelect('Comedy')">Comedy</button>
-                <button class="button" mat-menu-item  (click)="onSelect('Science')">Science</button>
-                <button class="button" mat-menu-item (click)="onSelect('Thriller')">Thriller</button>
-            </span>
-            <span class="d-flex">
-                <button class="button" mat-menu-item  (click)="onSelect('Adventure')">Adventure</button>
-                <button class="button" mat-menu-item  (click)="onSelect('Sci-Fi')">Sci-Fi</button>
-                <button class="button" mat-menu-item  (click)="onSelect('Drama')">Drama</button>
-            </span>
-            <span class="d-flex">
-                <button class="button" mat-menu-item  (click)="onSelect('Romance')">Romance</button>
-                <button class="button" mat-menu-item (click)="onSelect('Action')">Action</button>
-                <button class="button" mat-menu-item (click)="onSelect('Horror')">Horror</button>
-            </span>
+                <button class="button" mat-menu-item (click)="onSelect('Comedy')">{{'Comedy' | translate}}</button>
+                <button class="button" mat-menu-item  (click)="onSelect('Science')">{{'Science' | translate}}</button>
+                <button class="button" mat-menu-item (click)="onSelect('Thriller')">{{'Thriller' | translate}}</button>
+                <button class="button" mat-menu-item  (click)="onSelect('Adventure')">{{'Adventure' | translate}}</button>
+                <button class="button" mat-menu-item  (click)="onSelect('Sci-Fi')">{{'Sci-Fi' | translate}}</button>
+                <button class="button" mat-menu-item  (click)="onSelect('Drama')">{{'Drama' | translate}}</button>
+                <button class="button" mat-menu-item  (click)="onSelect('Romance')">{{'Romance' | translate}}</button>
+                <button class="button" mat-menu-item (click)="onSelect('Action')">{{'Action' | translate}}</button>
+                <button class="button" mat-menu-item (click)="onSelect('Horror')">{{'Horror' | translate}}</button>
         </mat-menu>
         <button class="button" mat-button [routerLink]="'mystuff'">
             <mat-icon class="icon-gap">video_library</mat-icon>
-            <span>MyStuff</span>
+            <span>{{'MyStuff' | translate}}</span>
         </button>
         <span class="mt-2" *ngIf="(authFacade.user$ | async) as user">
             <button *ngIf="user.email === admin.EMAIL" class="button" mat-button [routerLink]="'addMovie'">
                 <mat-icon class="icon-gap">add_to_queue</mat-icon>
-                <span>Add Movie</span>
+                <span>{{'Add Movie' | translate}}</span>
             </button>
         </span>
         <div class="ms-auto mt-1">
@@ -43,17 +37,20 @@
                 <mat-icon class="">language</mat-icon>
             </button>
             <mat-menu #language_dropdown class="menu">
-                <button class="button" mat-menu-item routterLink="">English</button>
-                <button class="button" mat-menu-item routterLink="">Spanish</button>
+                <button class="button" mat-menu-item (click)="setLanguage('en-US')">English</button>
+                <button class="button" mat-menu-item (click)="setLanguage('es-ES')">Spanish</button>
             </mat-menu>
     
             <button class="button dropdown-toggle ms-auto" mat-button [mat-menu-trigger-for]="dropdown">
                 <mat-icon class="">account_circle</mat-icon>
             </button>
             <mat-menu #dropdown class="menu">
-                    <button class="button" *ngIf="!(authFacade.user$ | async)" mat-menu-item [routerLink]="'login'">Login</button>
-                    <button class="button" *ngIf="!(authFacade.user$ | async)" mat-menu-item [routerLink]="'register'">SignUp</button>
-                    <button class="button" *ngIf="authFacade.user$ | async" mat-menu-item (click)="onLogout()">Logout</button>
+                    <button class="button" *ngIf="!(authFacade.user$ | async)" mat-menu-item [routerLink]="'login'">{{'Login' | translate}}</button>
+                    <button class="button" *ngIf="!(authFacade.user$ | async)" mat-menu-item [routerLink]="'register'">{{'SignUp' | translate}}</button>
+                    <div *ngIf="(authFacade.user$ | async) as user">
+                        <button class="button" *ngIf="user.firstName" mat-menu-item>{{'Hi' | translate}}, {{user.firstName.split(' ')[0]}}</button>
+                    </div>
+                    <button class="button" *ngIf="authFacade.user$ | async" mat-menu-item (click)="onLogout()">{{'Logout' | translate}}</button>
             </mat-menu> 
         </div>
     </div>

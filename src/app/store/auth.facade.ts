@@ -34,7 +34,9 @@ export class AuthFacade {
       .then(() => {
         this.afAuth.authState.subscribe((user) => {
           this.storeUser(user);
-          this.router.navigateByUrl("/movies");
+          setTimeout(() => {
+            this.router.navigateByUrl("/login");
+          },2000)
         });
       })
       .catch((error) => {
@@ -52,7 +54,10 @@ export class AuthFacade {
     .then(res => {
         this.storeUser(res.user)
         this.router.navigateByUrl("/movies");
-      });
+      })
+    .catch((err) => {
+      alert(err.FirebaseError)
+    })
   }
 
   /**

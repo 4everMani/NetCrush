@@ -1,17 +1,17 @@
 <ng-container>
   <br class="text" />
   <div class="container">
-    <h3 class="text mb-0">Comments</h3>
+    <h3 class="text mb-0">{{'Comments' | translate}}</h3>
       <ng-container *ngFor="let comment of comments$ | async">
         <app-review [comment]="comment"></app-review>
       </ng-container>
-      <p *ngIf="!(comments$ | async)" class="mt-1 text mb-1">No comments found</p>
-    <p class="text mb-0 mt-4">Write a comment</p>
+      <p *ngIf="!(comments$ | async)" class="mt-1 text mb-1">{{'No comments found' | translate}}</p>
+    <p class="text mb-0 mt-4">{{'Write a comment' | translate}}</p>
     <div class="textarea">
-      <textarea cols="55" rows="5" [(ngModel)]="comment"></textarea>
+      <textarea cols="78" rows="5" [(ngModel)]="comment"></textarea>
     </div>
     <span class="d-flex justify-content-end">
-      <button mat-raised-button (click)="onSubmit()">Submit</button>
+      <button mat-raised-button (click)="onSubmit()">{{'Submit' | translate}}</button>
     </span>
   </div>
 </ng-container>

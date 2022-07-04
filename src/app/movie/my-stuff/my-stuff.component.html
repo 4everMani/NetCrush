@@ -4,13 +4,13 @@
       class="watchlist"
       [ngClass]="{ selected: isWatcLaterEnabled }"
       (click)="changeMode(mode.watchLater)"
-      >Watchlist</span
+      >{{"Watch Later" | translate}}</span
     >
     <span
       class="fav_section"
       [ngClass]="{ selected: !isWatcLaterEnabled }"
       (click)="changeMode(mode.favourtie)"
-      >Favourite</span
+      >{{"Favourite" | translate}}</span
     >
       <app-watch-later class="margin_top" *ngIf="isWatcLaterEnabled"></app-watch-later>
       <app-favourite *ngIf="!isWatcLaterEnabled"></app-favourite>
