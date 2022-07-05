@@ -159,7 +159,6 @@ export class MovieService {
   }
 
   public isUserPrime(): Observable<boolean> {
-    console.log(this.email)
     if (this.email){
       return this.db.collection<PrimeUser>('prime_users', ref => ref.where('email', '==', this.email)).valueChanges()
       .pipe(

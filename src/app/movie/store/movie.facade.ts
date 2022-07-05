@@ -85,7 +85,6 @@ export class MovieFacade {
   }
 
   public getAllMovies(): Observable<Movie[] | undefined> {
-    console.log('get all movie called')
     const movies = this.movieSubject.getValue().movies;
     if (movies !== undefined && movies.length === 0) {
       this.movieService.getAllMovies().subscribe((data: Movie[]) => {
