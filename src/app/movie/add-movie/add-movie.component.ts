@@ -16,7 +16,6 @@ export class AddMovieComponent implements OnInit {
   }
 
   public onAddMovie(data: NgForm): void{
-    console.log(data.value as IMovie)
     this.movieFacade.addMovie(data.value as IMovie)
   }
 
