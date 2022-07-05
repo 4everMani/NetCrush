@@ -162,7 +162,6 @@ export class MovieService {
     if (this.email){
       return this.db.collection<PrimeUser>('prime_users', ref => ref.where('email', '==', this.email)).valueChanges()
       .pipe(
-        tap(res => console.log('res',res)),
         map(res => res.length === 0 ? false : true),
 
       );

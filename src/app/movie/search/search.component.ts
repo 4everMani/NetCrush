@@ -17,7 +17,6 @@ export class SearchComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-    console.log('hello')
     fromEvent<any>(this.input?.nativeElement, 'keyup')
     .pipe(
         map(event => event.target.value),
