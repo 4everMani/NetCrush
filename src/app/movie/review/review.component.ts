@@ -8,6 +8,9 @@ import { IComment } from 'src/app/interfaces/i-comment';
 })
 export class ReviewComponent implements OnInit {
 
+  /**
+   * Input property  to hold a comment
+   */
   @Input() comment?: IComment;
 
   constructor() { }

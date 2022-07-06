@@ -10,11 +10,18 @@ import { MovieFacade } from '../store/movie.facade';
 })
 export class FavouriteComponent implements OnInit {
 
+  /**
+   * Observable property to hold favourite movie data
+   */
   public favMovies$!: Observable<Movie[] | undefined>
 
   constructor(private readonly moviefacade: MovieFacade) { }
 
   ngOnInit(): void {
+
+    /**
+     * getting all favourite movies.
+     */
     this.favMovies$ = this.moviefacade.getAllFavuoriteMovies();
   }
 

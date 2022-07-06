@@ -11,6 +11,9 @@ import { MovieFacade } from '../store/movie.facade';
 })
 export class WatchLaterComponent implements OnInit {
 
+  /**
+   * Observable property to hold list of watchLaterMovies
+   */
   public watchLaterMovies$!: Observable<Movie[] | undefined>
 
   constructor(private readonly moviefacade: MovieFacade) { }

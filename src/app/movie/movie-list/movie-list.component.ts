@@ -12,8 +12,14 @@ import { Movie } from 'src/app/models/movie';
 })
 export class MovieListComponent implements OnInit {
 
+  /**
+   * Observable property to hold movies list
+   */
   public movies$!: Observable<Movie[] | undefined>;
 
+  /**
+   * Observable property to hold searched movie list
+   */
   public searchResult$!: Observable<Movie[] | undefined>;
 
   constructor(private readonly movieFacade: MovieFacade) { }

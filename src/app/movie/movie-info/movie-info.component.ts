@@ -9,6 +9,9 @@ import { Movie } from 'src/app/models/movie';
 })
 export class MovieInfoComponent implements OnInit {
 
+  /**
+   * Input property to hold movie data
+   */
   @Input() movie?: Movie
 
   constructor() { }

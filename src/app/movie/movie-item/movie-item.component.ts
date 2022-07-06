@@ -15,12 +15,25 @@ import { MovieFacade } from '../store/movie.facade';
   styleUrls: ['./movie-item.component.scss'],
 })
 export class MovieItemComponent implements OnInit {
+
+  /**
+   * Input property to hold a movie data
+   */
   @Input() movie?: Movie;
 
+  /**
+   * Observable property to hold data which shows a movie is in watch later section or not.
+   */
   public watchLater$!: Observable<boolean>;
 
+  /**
+   * Observable property to hold data which shows a movie is in favourote section or not.
+   */
   public favourite$!: Observable<boolean>;
 
+  /**
+   * Property which indicates that user is prime user or not
+   */
   private isPrimeUser = false;
 
   constructor(
@@ -38,6 +51,10 @@ export class MovieItemComponent implements OnInit {
     this.movieFacade.isUserPrime().subscribe((res) => this.isPrimeUser = res);
   }
 
+  /**
+   * adding or removing a movie from watch later
+   * @param data 
+   */
   public addToWatchLater(data: boolean): void {
     if (this.movie && data) {
       this.movieFacade.addToWatchLater(this.movie);
@@ -46,6 +63,10 @@ export class MovieItemComponent implements OnInit {
     }
   }
 
+  /**
+   * adding or removing a movie from favourite
+   * @param data 
+   */
   public addToFavourite(data: boolean): void {
     if (this.movie && data) {
       this.movieFacade.addToFav(this.movie);
@@ -54,6 +75,10 @@ export class MovieItemComponent implements OnInit {
     }
   }
 
+  /**
+   * 
+   * @param movie On selecting a movie
+   */
   public onMovieSelect(movie: Movie): void {
     if (movie.isPrimeMovie && !this.isPrimeUser) {
       this.matDialog
@@ -68,6 +93,5 @@ export class MovieItemComponent implements OnInit {
     } else {
       this.router.navigateByUrl(`/movies/${movie.id}`);
     }
-    // routerLink="/movies/{{movie.id}}"
   }
 }

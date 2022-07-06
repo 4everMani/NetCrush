@@ -22,6 +22,9 @@ import { Movie } from 'src/app/models/movie';
 import { WatchLater } from 'src/app/models/watch-later';
 import { MovieService } from '../services/movie.service';
 
+/**
+ * Movie data class to hold state
+ */
 class MovieData {
   movies?: Movie[] = [];
   watchLater?: Movie[] = [];
@@ -35,18 +38,36 @@ class MovieData {
 })
 export class MovieFacade {
 
+  /**
+   * movieCollectionState property to hold state
+   */
   private movieCollectionState = new MovieData();
 
+  /**
+   * subject to store state
+   */
   private movieSubject = new BehaviorSubject<MovieData>(
     this.movieCollectionState
   );
 
+  /**
+   * search subject to hold search results
+   */
   private searchMovieSubject = new BehaviorSubject<Movie[] | undefined>(undefined);
 
+  /**
+   * search movie observable to dispatch list of searched movies
+   */
   public searchMovieDispatch$ = this.searchMovieSubject.asObservable();
 
+  /**
+   * observable to dispatch movie state
+   */
   private dispatchMovieCollectionState$ = this.movieSubject.asObservable().pipe(distinctUntilChanged());
 
+  /**
+   * observable to dispatch movies
+   */
   public movies$ = this.dispatchMovieCollectionState$.pipe(
     map((data) => {
       return data.movies;
@@ -54,6 +75,9 @@ export class MovieFacade {
     distinctUntilChanged()
   );
 
+  /**
+   * observable to dispatch watch later movies
+   */
   public watchLaterMovies$ = this.dispatchMovieCollectionState$.pipe(
     map((data) => {
       return data.watchLater;
@@ -61,6 +85,9 @@ export class MovieFacade {
     distinctUntilChanged()
   );
 
+  /**
+   * observable to dispatch favourite movies
+   */
   public favouriteMovies$ = this.dispatchMovieCollectionState$.pipe(
     map((data) => {
       return data.favouriteMovie;
@@ -72,6 +99,11 @@ export class MovieFacade {
     this.getAllMovies();
   }
 
+  /**
+   * get a movie by id
+   * @param id 
+   * @returns Observable<Movie | undefined>
+   */
   public getMoviesById(id: string | null): Observable<Movie | undefined> {
     if (
       this.movieCollectionState.movies !== undefined &&
@@ -84,6 +116,10 @@ export class MovieFacade {
     );
   }
 
+  /**
+   * get all movies.
+   * @returns Observable<Movie | undefined>
+   */
   public getAllMovies(): Observable<Movie[] | undefined> {
     const movies = this.movieSubject.getValue().movies;
     if (movies !== undefined && movies.length === 0) {
@@ -94,12 +130,20 @@ export class MovieFacade {
     return this.movies$.pipe(distinctUntilChanged());
   }
 
+  /**
+   * Update subject with current state
+   * @param state 
+   */
   public updateState(state: MovieData) {
     this.movieCollectionState = state;
     this.movieSubject.next(state);
     const a = this.movieSubject.getValue();
   }
 
+  /**
+   * get all watch later movies
+   * @returns Observable<Movie | undefined>
+   */
   public getWatchLaterMovies(): Observable<Movie[] | undefined> {
       if (this.movieCollectionState.watchLater!== undefined &&
         this.movieCollectionState.watchLater.length === 0){
@@ -115,6 +159,10 @@ export class MovieFacade {
       return this.watchLaterMovies$;
   }
 
+  /**
+   * add a movie to watch later
+   * @param movie 
+   */
   public addToWatchLater(movie: Movie): void {
     if (!this.movieCollectionState.watchLater?.includes(movie)){
         this.movieCollectionState.watchLater?.push(movie);
@@ -126,6 +174,11 @@ export class MovieFacade {
     }
   }
 
+  /**
+   * add favorite or watch later movies to movie section
+   * @param data 
+   * @returns 
+   */
   private addToMoviesSection(data: WatchLater[] | Favourite[]): Observable<Movie[]>{
     const movies = this.movieSubject.getValue().movies;
     const movieArr: Movie[] = [];
@@ -141,6 +194,11 @@ export class MovieFacade {
     return of(movieArr)
   }
 
+  /**
+   * checks a movie is in watch later section or not
+   * @param movieId 
+   * @returns Observable<boolean>
+   */
   public isWatchLaterMovie(movieId: string): Observable<boolean>{
     return this.getWatchLaterMovies()
             .pipe(
@@ -149,6 +207,12 @@ export class MovieFacade {
             )
   }
 
+  /**
+   * finding match between all avalable movies.
+   * @param movies 
+   * @param movieId 
+   * @returns boolean
+   */
   private isMovieMatched(movies: Movie[] | undefined, movieId: string): boolean{
     if (movies){
         return movies.find(movie => movie.id === movieId) ? true : false
@@ -156,6 +220,10 @@ export class MovieFacade {
     return false
   }
 
+  /**
+   * remove a movie drom watch later section
+   * @param movieId 
+   */
   public removeFromWatchLater(movieId: string): void{
     const item = this.movieCollectionState.watchLaterData;
     if (item){
@@ -168,6 +236,10 @@ export class MovieFacade {
   }
 
 
+  /**
+   * get all favourite movies
+   * @returns Observable<Movie[] | undefined>
+   */
   public getAllFavuoriteMovies(): Observable<Movie[] | undefined>{
     if (this.movieCollectionState.favouriteMovie!== undefined &&
         this.movieCollectionState.favouriteMovie.length === 0){
@@ -183,6 +255,11 @@ export class MovieFacade {
       return this.favouriteMovies$;
   }
 
+  /**
+   * checks whether a movie is favourite or not
+   * @param movieId 
+   * @returns Observable<boolean>
+   */
   public isFavouriteMovie(movieId: string): Observable<boolean>{
     return this.getAllFavuoriteMovies()
             .pipe(
@@ -191,6 +268,10 @@ export class MovieFacade {
             )
   }
 
+  /**
+   * add a movie to favourite
+   * @param movie 
+   */
   public addToFav(movie: Movie): void{
     if (!this.movieCollectionState.favouriteMovie?.includes(movie)){
         this.movieCollectionState.favouriteMovie?.push(movie);
@@ -202,6 +283,10 @@ export class MovieFacade {
     }
   }
 
+  /**
+   * remove a movie from favorite db
+   * @param movieId
+   */
   public removeFav(movieId: string): void{
     const item = this.movieCollectionState.favouriteData;
     if (item){
@@ -213,16 +298,28 @@ export class MovieFacade {
     }
   }
 
+  /**
+   * add a new movie to db.
+   * @param movie 
+   */
   public addMovie(movie: IMovie): void{
     this.movieService.addMovieToLibrary(movie);
   }
 
+  /** 
+   * add acomment
+   */
   public addComment(text: string, movieId: string): void{
     const currentTimeDate = `${new Date().getHours()}:${new Date().getMinutes()} ${new Date().getDate()}-${new Date().getMonth()}-${new Date().getFullYear()}`;
     const input : IComment = {movieId: movieId, date: currentTimeDate, comment: text}
     this.movieService.addCommentToDb(input);
   }
 
+  /**
+   * get comments by movie id
+   * @param movieId 
+   * @returns Observable<IComment[] | undefined>
+   */
   public getCommentByMovieId(movieId: string): Observable<IComment[] | undefined>{
     return this.movieService.getComment(movieId)
             .pipe(
@@ -230,11 +327,21 @@ export class MovieFacade {
             );
   }
 
+  /**
+   * get search result
+   * @param searchString 
+   */
   public getSearchResult(searchString: string): void{
     const result = this.searchResult(this.movieCollectionState.movies, searchString);
     this.searchMovieSubject.next(result);
   }
 
+  /**
+   * finding match between searhced term and movies
+   * @param arr 
+   * @param str 
+   * @returns Movie[] | undefined
+   */
   public searchResult(arr?: Movie[], str?: string): Movie[] | undefined{
     if (arr && arr.length > 0 && str){
         return arr.filter(x => Object.values(x)
@@ -249,6 +356,11 @@ export class MovieFacade {
     this.searchMovieSubject.next(undefined);
   }
 
+  /**
+   * add a customer as prime member
+   * @param canPrimeMemberAdd 
+   * @returns Observable<boolean>
+   */
   public addPrimeMember(canPrimeMemberAdd: boolean): Observable<boolean>{
     if (canPrimeMemberAdd){
       return this.movieService.addPrimeCustomer();
@@ -256,6 +368,10 @@ export class MovieFacade {
     return of(false)
   }
 
+  /**
+   * checks whether user is prime user or not
+   * @returns Observable<boolean>
+   */
   public isUserPrime():Observable<boolean>{
     return this.movieService.isUserPrime();
   }

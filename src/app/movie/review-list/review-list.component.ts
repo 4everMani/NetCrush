@@ -11,10 +11,19 @@ import { MovieFacade } from '../store/movie.facade';
 })
 export class ReviewListComponent implements OnInit {
 
+  /**
+   * Input property to hold a movie data.
+   */
   @Input() movie?: Movie;
 
+  /**
+   * property to hold a comment
+   */
   public comment: string = '';
 
+  /**
+   * Observable property to hold list of commments
+   */
   public comments$!: Observable<IComment[] | undefined>;
 
 
@@ -27,6 +36,9 @@ export class ReviewListComponent implements OnInit {
     }
   }
 
+  /**
+   * On submitting a comment
+   */
   public onSubmit(): void{
     if (this.movie && this.movie.id){
       this.movieFacade.addComment(this.comment, this.movie.id);

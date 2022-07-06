@@ -9,6 +9,9 @@ import { MovieFacade } from '../store/movie.facade';
 })
 export class SearchComponent implements OnInit, AfterViewInit {
 
+  /**
+   * Viewchild property which holds element refernce
+   */
   @ViewChild('searchInput', { static: true }) input?: ElementRef;
 
   constructor(private readonly mvoieFacade: MovieFacade) { }
@@ -16,6 +19,9 @@ export class SearchComponent implements OnInit, AfterViewInit {
   ngOnInit(): void {
   }
 
+  /**
+   * On searching a movie.
+   */
   ngAfterViewInit(): void {
     fromEvent<any>(this.input?.nativeElement, 'keyup')
     .pipe(
