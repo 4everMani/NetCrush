@@ -13,6 +13,9 @@ import { MovieFacade } from '../store/movie.facade';
 })
 export class WatchComponent implements OnInit {
 
+  /**
+   * Observable property to hold a movie details
+   */
   public movieDetails$!: Observable<Movie | undefined>;
   
   constructor(private route: ActivatedRoute, private readonly movieFacade: MovieFacade) { }
@@ -21,6 +24,9 @@ export class WatchComponent implements OnInit {
     this.loadMovieDetails()
   }
 
+  /**
+   * loading movie details
+   */
   private loadMovieDetails(): void{
     const movieId =  this.route.snapshot.paramMap.get('id');
      this.movieDetails$ = this.movieFacade.getMoviesById(movieId);

@@ -13,10 +13,16 @@ export class PrimeActivateComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  /**
+   * On clicking Ok button.
+   */
   public onAccept(): void{
     this.dialogRef.close(true);
   }
 
+  /**
+   * On clicking No button.
+   */
   public onCancel(): void{
     this.dialogRef.close(false);
   }

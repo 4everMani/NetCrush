@@ -10,6 +10,9 @@ import { AuthFacade } from 'src/app/store/auth.facade';
 })
 export class RegisterComponent implements OnInit {
 
+  /**
+   * will contain max date.
+   */
   public maxDate = new Date();
 
   constructor(private readonly authFacade: AuthFacade) { }
@@ -18,6 +21,10 @@ export class RegisterComponent implements OnInit {
     this.maxDate.setFullYear(this.maxDate.getFullYear() - 18);
   }
 
+  /**
+   * Performing SignUp Operation
+   * @param form 
+   */
   public onSubmit(form: NgForm): void {
     this.authFacade.createAccount(form.value as IUser)
   }

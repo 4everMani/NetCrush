@@ -14,6 +14,9 @@ import { AuthFacade } from 'src/app/store/auth.facade';
 })
 export class NavComponent implements OnInit {
 
+  /**
+   * Constant to indicate admin
+   */
   public admin = Admin;
 
   constructor(public readonly authFacade: AuthFacade,
@@ -24,20 +27,34 @@ export class NavComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  /**
+   * Performing Logout Operation
+   */
   public onLogout(): void {
     this.authFacade.logoutUser();
   }
 
+  /**
+   * On selecting a category
+   * @param category 
+   */
   public onSelect(category: string): void {
     this.router.navigateByUrl('/movies');
     this.movieFacade.getSearchResult(category);
   }
 
+  /**
+   * Navigating to home.
+   */
   public navigateToHome(): void{
     this.movieFacade.setSearchState();
     this.router.navigateByUrl('/movies');
   }
 
+  /**
+   * sets language for application.
+   * @param languageCode
+   */
   public setLanguage(languageCode: string){
     this.translateService.use(languageCode);
   }

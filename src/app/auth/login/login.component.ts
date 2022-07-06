@@ -16,6 +16,10 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  /**
+   * Performing signin operation
+   * @param form 
+   */
   public onSignIn(form: NgForm): void {
     this.authFacade.loginAccount(form.value as IUser)
   }

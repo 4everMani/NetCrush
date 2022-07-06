@@ -8,8 +8,14 @@ import { MyStuff } from '../utilities/mode.enum';
 })
 export class MyStuffComponent implements OnInit {
 
+  /**
+   * mystuff mode enum
+   */
   public mode = MyStuff;
 
+  /**
+   * indicates that we are in watch later section of my-stuff
+   */
   public isWatcLaterEnabled = true;
 
   constructor() { }
@@ -17,6 +23,10 @@ export class MyStuffComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  /**
+   * On changing mode from watch later to favourite or vice-versa
+   * @param mode 
+   */
   public changeMode(mode: MyStuff): void{
     if (this.isWatcLaterEnabled && mode === MyStuff.favourtie){
       this.isWatcLaterEnabled = false;

@@ -13,6 +13,9 @@ import { Movie } from 'src/app/models/movie';
 import { WatchLater } from 'src/app/models/watch-later';
 import { AuthFacade } from 'src/app/store/auth.facade';
 
+/**
+ * Prime user interface
+ */
 interface PrimeUser{
   email: string;
 }
@@ -20,12 +23,19 @@ interface PrimeUser{
 @Injectable()
 export class MovieService {
 
-  private store:IMovie[] = []
-
+  /**
+   * property to hold email subscription
+   */
   private emailSubscription!: Subscription;
 
+  /**
+   * property to hold email of user
+   */
   private email?: string;
 
+  /**
+   * property to hold name of user.
+   */
   private name?: string;
   
   constructor(private userfacade: AuthFacade,
@@ -37,6 +47,10 @@ export class MovieService {
     })
    }
 
+   /**
+    * Get all movies
+    * @returns Observable<Movie[]>
+    */
   public getAllMovies(): Observable<Movie[]>{
     return this.db.collection<Movie>('movies')
            .snapshotChanges()
@@ -52,6 +66,10 @@ export class MovieService {
            )
   }
 
+  /**
+   * add a movie to watch later
+   * @param movieId 
+   */
   public addWatchLater(movieId: string | undefined): void{
     if (movieId && this.email){
       const data: IWatchLater = {movieId: movieId, email: this.email}
@@ -59,11 +77,11 @@ export class MovieService {
     }
   }
 
+  /**
+   * get all watchLater movies
+   * @returns Observable<Movie[]>
+   */
   public getWatchLaterMovies(): Observable<WatchLater[]>{
-    // let email : string | undefined = '';
-    //   this.userfacade.user$.subscribe(user => {
-    //     email = user?.email
-    //   })
       if (this.email){
         return this.db.collection<WatchLater>('watchLater', ref => ref.where('email', '==',this.email)).valueChanges();
       }
@@ -71,6 +89,10 @@ export class MovieService {
       return of(arr)
 } 
 
+/**
+ * remove a movie from watch later
+ * @param watchLaterData 
+ */
   public removeMovieFromWatchLater(watchLaterData:  WatchLater):void {
     this.db.collection<WatchLater>('watchLater').snapshotChanges()
     .pipe(
@@ -94,6 +116,10 @@ export class MovieService {
     
   }
 
+  /**
+   * Add a movie into favourtite
+   * @param movieId 
+   */
   public addToFavourite(movieId: string | undefined): void{
     if (this.email && movieId){
       const data: Favourite = {eamilId: this.email, movieId:movieId};
@@ -101,6 +127,10 @@ export class MovieService {
     }
   }
 
+  /**
+   * get all favourite movies
+   * @returns 
+   */
   public getFavouriteMovieDetails(): Observable<Favourite[]>{
     if (this.email){
       return this.db.collection<Favourite>('favouriteMovies', ref => ref.where('eamilId', '==',this.email)).valueChanges();
@@ -109,6 +139,10 @@ export class MovieService {
     return of(arr)
   }
 
+  /**
+   * remove a movie from favourite
+   * @param favouriteData 
+   */
   public removeFavourite(favouriteData: Favourite){
     this.db.collection<WatchLater>('favouriteMovies').snapshotChanges()
     .pipe(
@@ -131,6 +165,10 @@ export class MovieService {
      })
   }
 
+  /**
+   * add a movie
+   * @param movie 
+   */
   public addMovieToLibrary(movie: IMovie): void{
     this.db.collection<IMovie>('movies').add(movie)
             .then(() => {
@@ -138,16 +176,29 @@ export class MovieService {
             })
   }
 
+  /**
+   * add a comment
+   * @param data 
+   */
   public addCommentToDb(data: IComment): void{
     data.commentedBy = this.name;
     this.db.collection<IComment>('comments').add(data);
   }
 
+  /**
+   * gets list of comments
+   * @param movieId 
+   * @returns Observable<IComment[]>
+   */
   public getComment(movieId: string): Observable<IComment[]>{
       return this.db.collection<IComment>('comments', ref => ref.where('movieId', '==', movieId)).valueChanges()
       .pipe(shareReplay());
   }
 
+  /**
+   * add a customer as prime user in db
+   * @returns 
+   */
   public addPrimeCustomer(): Observable<boolean>{
     if (this.email){
       const data: PrimeUser = {
@@ -158,6 +209,10 @@ export class MovieService {
     return of(false)
   }
 
+  /**
+   * check whether customer is prime user or not
+   * @returns Observable<boolean>
+   */
   public isUserPrime(): Observable<boolean> {
     if (this.email){
       return this.db.collection<PrimeUser>('prime_users', ref => ref.where('email', '==', this.email)).valueChanges()

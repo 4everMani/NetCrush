@@ -9,8 +9,15 @@ import { Router } from '@angular/router';
 
 @Injectable()
 export class AuthFacade {
+
+  /**
+   * login subject to store user data
+   */
   private loginSubject = new BehaviorSubject<IUser | undefined>(undefined);
 
+  /**
+   * user observable to dispatch user data
+   */
   public user$ = this.loginSubject.asObservable();
 
   constructor(
@@ -62,7 +69,7 @@ export class AuthFacade {
   }
 
   /**
-   * 
+   * storeUser.
    * @param user To store user
    */
   private storeUser(user: User | null): void {
@@ -76,6 +83,9 @@ export class AuthFacade {
     }
   }
 
+  /**
+   * Logout operation
+   */
   public logoutUser(): void{
     this.authService.logout()
     .then(() =>{
@@ -84,6 +94,10 @@ export class AuthFacade {
     });
   }
 
+  /**
+   * 
+   * @returns initiate authentication
+   */
   public initAuthentication(): Observable<boolean>{
     console.log('initialization')
     return this.afAuth.authState
